@@ -1,0 +1,39 @@
+{
+    "editor.fontSize": 13,
+    "editor.tabSize": 2,
+    "editor.formatOnSave": true,
+    "[javascript]": {
+        // "editor.formatOnSave": false,
+        "editor.defaultFormatter": "numso.prettier-standard-vscode",
+    },
+    "eslint.alwaysShowStatus": true,
+    "prettier.disableLanguages": [
+        "js",
+        "javascript",
+        "javascriptreact"
+    ],
+    "eslint.validate": [
+        {
+            "language": "javascript",
+            "autoFix": true
+        },
+        {
+            "language": "javascriptreact",
+            "autoFix": true
+        },
+        {
+            "language": "typescript",
+            "autoFix": true
+        },
+        {
+            "language": "typescriptreact",
+            "autoFix": true
+        }
+    ],
+    "eslint.autoFixOnSave": true,
+    "workbench.colorTheme": "lucy",
+    "editor.codeActionsOnSave": {
+        "source.fixAll.eslint": true
+    },
+    "window.zoomLevel": 0
+}

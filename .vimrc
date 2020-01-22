@@ -1,0 +1,15 @@
+" Syntax highlighting
+syntax on
+
+" Hybrid line numbers (https://jeffkreeftmeijer.com/vim-number/)
+set number relativenumber
+
+set expandtab
+set autoindent
+set number
+set nowrap
+set fdm=indent
+set shiftwidth=2
+set tabstop=2
+set laststatus=2
+set backspace=eol,indent,start
