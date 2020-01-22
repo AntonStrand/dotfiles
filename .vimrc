@@ -13,3 +13,9 @@ set shiftwidth=2
 set tabstop=2
 set laststatus=2
 set backspace=eol,indent,start
+
+" line jumps
+nnoremap H ^
+nnoremap J 5j
+nnoremap K 5k
+nnoremap L g_
