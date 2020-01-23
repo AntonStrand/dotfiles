@@ -1,3 +1,6 @@
+#!/bin/bash
+echo "Adding symlinks"
+
 # Dotfiles
 #ln -nfs ~/.dotfiles/.bash_profile ~/.bash_profile
 ln -nfs ~/.dotfiles/.zshrc ~/.zshrc

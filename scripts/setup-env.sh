@@ -43,5 +43,5 @@ fi
 
 source ~/.zshrc
 
-chmod +x setup-symlinks.sh
-./setup-symlinks.sh
+chmod +x ~/.dotfiles/scripts/setup-symlinks.sh
+~/.dotfiles/scripts/setup-symlinks.sh
