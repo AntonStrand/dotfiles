@@ -99,3 +99,63 @@ source $ZSH/oh-my-zsh.sh
 # alias ohmyzsh="mate ~/.oh-my-zsh"
 # List all with color
 alias ll="ls -AlG"
+alias rmd="rm -rf"
+alias sz="source ~/.zshrc"
+
+## Git add and commit
+alias gac="git add . && git commit -m"
+alias gs="git status"
+
+# -------
+# Functions
+# -------
+
+# ll after cd
+chpwd() { ll }
+
+# Create and move into directory
+mcd () {
+    mkdir -p $1
+    cd $1
+}
+
+# Google
+function google () {
+	echo "Searching for: $@"
+	search=$(echo $@ | sed 's/ /%20/g')
+	open "http://www.google.com/search?q=$search"
+}
+
+# Clone a student repository using SSH and creates a folder named "username-repository-course" based on URL.
+# usage: clone git@gitlab.lnu.se:1dv023/student/as224xz1/assignment-1.git
+# result: as224xz1-assignment-1-1dv023
+function clone () {
+	# dir = username-repository-course
+	dir=$(echo $1 | cut -d: -f2 | rev | cut -d '/' -f1,2,4 | rev | cut -d '.' -f1 | awk -F '/' '{print $2, $3, $1}' | sed 's/ /-/g')
+	git clone $1 $dir
+}
+
+function gi () {
+	if [[ $1 == "list" ]]
+	then
+		curl -sL https://www.gitignore.io/api/list | tr ',' '\n' | less
+	elif [[ "$1" == "exists" ]]
+	then
+		curl -sL https://www.gitignore.io/api/list | tr ',' '\n' | grep $2
+	else
+		settings=$(echo $@ | sed 's/ /,/g')
+		curl -sL https://www.gitignore.io/api/$settings >> .gitignore
+	fi
+}
+
+function exam () {
+	dir=$(echo $1 | rev | cut -d '/' -f1 | rev | cut -d '.' -f1)
+	echo $dir
+	git clone $1 $dir
+	cd $dir
+	code .
+	npm install
+	open http://localhost:4000
+	npm start
+	cd ..
+}
