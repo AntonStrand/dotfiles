@@ -107,11 +107,23 @@ alias gac="git add . && git commit -m"
 alias gs="git status"
 
 # -------
+# Edit command in vim
+# Use: ctrl+x ctrl+e
+# -------
+
+autoload -U edit-command-line
+zle -N edit-command-line
+bindkey -M vicmd v edit-command-line
+
+# -------
 # Functions
 # -------
 
 # ll after cd
-chpwd() { ll }
+chpwd() { 
+  echo $PWD contains:
+  ll
+}
 
 # Create and move into directory
 mcd () {
@@ -159,3 +171,24 @@ function exam () {
 	npm start
 	cd ..
 }
+
+# -------
+# VI Mode
+# -------
+
+set -o vi
+bindkey -v
+
+# Show current mode in prompt
+function zle-line-init zle-keymap-select {
+    VIM_PROMPT="%{$fg_bold[cyan]%} [% NORMAL]% %{$reset_color%}"
+    RPS1="${${KEYMAP/vicmd/$VIM_PROMPT}/(main|viins)/} $EPS1"
+    zle reset-prompt
+}
+
+# Trigger mode change
+zle -N zle-line-init
+zle -N zle-keymap-select
+
+# Kill lag
+export KEYTIMEOUT=1
