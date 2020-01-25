@@ -1,3 +1,6 @@
+" Use jj as ESC
+inoremap jj <Esc>
+
 " Syntax highlighting
 syntax on
 
