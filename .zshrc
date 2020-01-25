@@ -107,15 +107,6 @@ alias gac="git add . && git commit -m"
 alias gs="git status"
 
 # -------
-# Edit command in vim
-# Use: ctrl+x ctrl+e
-# -------
-
-autoload -U edit-command-line
-zle -N edit-command-line
-bindkey -M vicmd v edit-command-line
-
-# -------
 # Functions
 # -------
 
