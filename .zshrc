@@ -133,9 +133,10 @@ function google () {
 # usage: clone git@gitlab.lnu.se:1dv023/student/as224xz1/assignment-1.git
 # result: as224xz1-assignment-1-1dv023
 function clone () {
-	# dir = username-repository-course
-	dir=$(echo $1 | cut -d: -f2 | rev | cut -d '/' -f1,2,4 | rev | cut -d '.' -f1 | awk -F '/' '{print $2, $3, $1}' | sed 's/ /-/g')
+	# dir = username-assignment-course
+  dir=$(echo $1 | awk -F ':' '{print $2}' | awk -F '.' '{print $1}' | awk -F '/' '{print $3"-"$4"-"$1}') 
 	git clone $1 $dir
+  cd $dir
 }
 
 function gi () {
