@@ -118,50 +118,50 @@ chpwd() {
 
 # Create and move into directory
 mcd () {
-    mkdir -p $1
-    cd $1
+  mkdir -p $1
+  cd $1
 }
 
 # Google
 function google () {
-	echo "Searching for: $@"
-	search=$(echo $@ | sed 's/ /%20/g')
-	open "http://www.google.com/search?q=$search"
+  echo "Searching for: $@"
+  search=$(echo $@ | sed 's/ /%20/g')
+  open "http://www.google.com/search?q=$search"
 }
 
 # Clone a student repository using SSH and creates a folder named "username-repository-course" based on URL.
 # usage: clone git@gitlab.lnu.se:1dv023/student/as224xz1/assignment-1.git
 # result: as224xz1-assignment-1-1dv023
 function clone () {
-	# dir = username-assignment-course
+  # dir = username-assignment-course
   dir=$(echo $1 | awk -F ':' '{print $2}' | awk -F '.' '{print $1}' | awk -F '/' '{print $3"-"$4"-"$1}') 
-	git clone $1 $dir
+  git clone $1 $dir
   cd $dir
 }
 
 function gi () {
-	if [[ $1 == "list" ]]
-	then
-		curl -sL https://www.gitignore.io/api/list | tr ',' '\n' | less
-	elif [[ "$1" == "exists" ]]
-	then
-		curl -sL https://www.gitignore.io/api/list | tr ',' '\n' | grep $2
-	else
-		settings=$(echo $@ | sed 's/ /,/g')
-		curl -sL https://www.gitignore.io/api/$settings >> .gitignore
-	fi
+  if [[ $1 == "list" ]]
+  then
+    curl -sL https://www.gitignore.io/api/list | tr ',' '\n' | less
+  elif [[ "$1" == "exists" ]]
+  then
+    curl -sL https://www.gitignore.io/api/list | tr ',' '\n' | grep $2
+  else
+    settings=$(echo $@ | sed 's/ /,/g')
+    curl -sL https://www.gitignore.io/api/$settings >> .gitignore
+  fi
 }
 
 function exam () {
-	dir=$(echo $1 | rev | cut -d '/' -f1 | rev | cut -d '.' -f1)
-	echo $dir
-	git clone $1 $dir
-	cd $dir
-	code .
-	npm install
-	open http://localhost:4000
-	npm start
-	cd ..
+  dir=$(echo $1 | rev | cut -d '/' -f1 | rev | cut -d '.' -f1)
+  echo $dir
+  git clone $1 $dir
+  cd $dir
+  code .
+  npm install
+  open http://localhost:4000
+  npm start
+  cd ..
 }
 
 # -------
@@ -173,9 +173,9 @@ bindkey -v
 
 # Show current mode in prompt
 function zle-line-init zle-keymap-select {
-    VIM_PROMPT="%{$fg_bold[cyan]%} [% NORMAL]% %{$reset_color%}"
-    RPS1="${${KEYMAP/vicmd/$VIM_PROMPT}/(main|viins)/} $EPS1"
-    zle reset-prompt
+  VIM_PROMPT="%{$fg_bold[cyan]%} [% NORMAL]% %{$reset_color%}"
+  RPS1="${${KEYMAP/vicmd/$VIM_PROMPT}/(main|viins)/} $EPS1"
+  zle reset-prompt
 }
 
 # Trigger mode change
