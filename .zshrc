@@ -98,7 +98,7 @@ source $ZSH/oh-my-zsh.sh
 # alias zshconfig="mate ~/.zshrc"
 # alias ohmyzsh="mate ~/.oh-my-zsh"
 # List all with color
-alias ll="ls -AlG"
+alias ll="ls -AalG"
 alias rmd="rm -rf"
 alias sz="source ~/.zshrc"
 
