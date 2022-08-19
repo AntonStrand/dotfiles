@@ -98,13 +98,36 @@ source $ZSH/oh-my-zsh.sh
 # alias zshconfig="mate ~/.zshrc"
 # alias ohmyzsh="mate ~/.oh-my-zsh"
 # List all with color
-alias ll="ls -AlG"
+alias ll="ls -AalG"
 alias rmd="rm -rf"
 alias sz="source ~/.zshrc"
 
-## Git add and commit
+## Git helpers
+function github_project_root () {
+  echo "https://github.$(git config remote.origin.url | cut -f2 -d.)"
+}
+
+function current_branch () {
+  echo $(git symbolic-ref --quiet --short HEAD)    
+}
+
+function current_directory () {
+  echo $(git rev-parse --show-prefix)
+}
+
 alias gac="git add . && git commit -m"
 alias gs="git status"
+alias pull="git pull"
+alias push="git push"
+alias pushb="git push -u origin $(current_branch)"
+alias newpr="open $(github_project_root)/pull/new/$(current_branch)/$(current_directory)"
+alias openb="open $(github_project_root)/tree/$(current_branch)/$(current_directory)"
+alias opengithub="open $(github_project_root)"
+alias pp="git pull && git push"
+alias gc="git checkout"
+alias gcb="git checkout -b"
+# checkout default branch
+alias gcm="git checkout $(git rev-parse --abbrev-ref origin/HEAD | sed 's/origin\///')"
 
 # -------
 # Functions
