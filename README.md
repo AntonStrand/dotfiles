@@ -1,20 +1,21 @@
 # dotfiles
+
 My current dot files configurations
 
 ## Instructions
-```bash
-git clone git@github.com:AntonStrand/dotfiles.git ~/.dotfiles
-```
+
+### Installation
+
+This will clone the repo, symlink all settings and install applications via brew.
 
 ```bash
-cd ~/.dotfiles
+git clone git@github.com:AntonStrand/dotfiles.git ~/dotfiles
+cd ~/dotfiles
+sh bin/setup-env.sh
 ```
 
-```bash
-chmod +x scripts/setup-env.sh
-```
+### Manual actions
 
-```bash
-./scripts/setup-env.sh
-```
+#### Tmux
 
+To install the plugins you have to start a session and press `prefix + I`. The prefix is `C-a`.
