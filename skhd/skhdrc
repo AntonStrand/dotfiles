@@ -1,0 +1,52 @@
+# restart Yabi, SpaceBar, and SKHD
+alt + shift - r : \
+    killall yabai&&yabai --start-service&&skhd --restart-service
+# open kitty terminal
+ctrl + shift + alt - k : open -a kitty
+ctrl + shift + alt - s : open -a slack
+ctrl + shift + alt - m : open -a messenger
+ctrl + shift + alt - c : open /Applications/Google\ Chrome.app
+
+# change window focus within space
+alt - x : yabai -m window --focus recent
+alt - h : yabai -m window --focus west
+alt - j : yabai -m window --focus south
+alt - k : yabai -m window --focus north
+alt - l : yabai -m window --focus east
+alt - z : yabai -m window --focus stack.prev
+alt - c : yabai -m window --focus stack.next
+
+# swap windows
+ctrl + alt - j : yabai -m window --swap south
+ctrl + alt - k : yabai -m window --swap north
+ctrl + alt - h : yabai -m window --swap west
+ctrl + alt - l : yabai -m window --swap east
+
+# maximize a window
+ctrl + alt - m : yabai -m window --toggle zoom-fullscreen
+
+# balance out tree of windows (resize to occupy same area)
+ctrl + alt - e : yabai -m space --balance
+
+# toggle window float
+ctrl + alt - t : yabai -m window --toggle float --grid 4:4:1:1:2:2
+
+# toggle sticky (show on all spaces)
+alt - s : yabai -m window --toggle sticky
+
+# rotate tree
+alt - r : yabai -m space --rotate 90
+
+# move window to display left and right
+ctrl + alt + shift - w : yabai -m window --display west; yabai -m display --focus west;
+ctrl + alt + shift - e : yabai -m window --display east; yabai -m display --focus east;
+
+#move window to prev and next space
+ctrl + alt - p : yabai -m window --space prev;
+ctrl + alt - n : yabai -m window --space next;
+
+# change layout of desktop
+alt + shift - e : yabai -m space --layout bsp
+alt + shift - d : yabai -m space --layout stack
+alt + shift - s : yabai -m space --layout float
+
