@@ -1,4 +1,4 @@
-#!/bin/zsh
+!/bin/zsh
 
 OH_MY_ZSH="${HOME}/.oh-my-zsh"
 
@@ -43,5 +43,5 @@ fi
 # ZSH Autosuggestions
  [ ! -d ${ZSH_CUSTOM:-~/.oh-my-zsh/custom}/plugins/zsh-autosuggestion ] && git clone https://github.com/zsh-users/zsh-autosuggestions ${ZSH_CUSTOM:-~/.oh-my-zsh/custom}/plugins/zsh-autosuggestions
 
-chmod +x ~/.dotfiles/scripts/setup-symlinks.sh
-~/.dotfiles/scripts/setup-symlinks.sh
+sh ./brew.sh
+sh ./setup-symlinks.sh

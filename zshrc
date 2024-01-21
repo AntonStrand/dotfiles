@@ -1,7 +1,8 @@
 # Path to the oh-my-zsh installation.
 export ZSH=$HOME/.oh-my-zsh
 
-ZSH_THEME="robbyrussell"
+eval "$(starship init zsh)"
+eval "$(zoxide init zsh)"
 
 # Plugins
 plugins=(
@@ -15,6 +16,8 @@ ZSH_AUTOSUGGEST_HIGHLIGHT_STYLE="fg=#667c94"
 
 source $ZSH/oh-my-zsh.sh
 
+alias tn="tmux new -s $(basename $PWD)"
+
 # List all with color
 alias ll="ls -AalG"
 
@@ -24,9 +27,12 @@ alias rmd="rm -rf"
 # Source changes
 alias sz="source ~/.zshrc"
 
-## Git helpers
+# Elm review & format
+alias elm-fix="npx elm-review --fix && npx elm-format --yes ."
+
+# Git helpers
 function github_project_root () {
-  echo "https://github.$(git config remote.origin.url | cut -f2 -d.)"
+  echo "https://github.$(git config remote.origin.url | cut -f2 -d. | sed 's/:/\//')"
 }
 
 function current_branch () {
@@ -37,20 +43,53 @@ function current_directory () {
   echo $(git rev-parse --show-prefix)
 }
 
+function openg () {
+  open $(github_project_root)
+}
+
+function pushu () {
+  git push -u origin $(current_branch)
+}
+
+function glb () {
+  git submodule foreach 'printf "%-30s %s\n" "$name" "$(git symbolic-ref --short HEAD)"' | grep -v Entering
+}
+
 alias gac="git add . && git commit -m"
 alias gs="git status"
 alias pull="git pull"
 alias push="git push"
-alias pushb="git push -u origin $(current_branch)"
-alias newpr="open $(github_project_root)/pull/new/$(current_branch)/$(current_directory)"
-alias openb="open $(github_project_root)/tree/$(current_branch)/$(current_directory)"
-alias opengithub="open $(github_project_root)"
 alias pp="git pull && git push"
 alias gc="git checkout"
 alias gcb="git checkout -b"
+alias gd="git diff"
+
+function default_branch () {
+  git rev-parse --abbrev-ref origin/HEAD | sed 's/origin\///'
+}
 
 # checkout default branch
-alias gcm="git checkout $(git rev-parse --abbrev-ref origin/HEAD | sed 's/origin\///')"
+function gcm () {
+  git checkout $(default_branch)
+}
+
+# merge default branch
+function gmm () {
+  git merge $(default_branch)
+}
+
+function delete_branches () {
+  git branch | grep -v "$(default_branch)" | xargs git branch -D
+}
+
+function newpr () {
+  open $(github_project_root)/pull/new/$(current_branch)/$(current_directory)
+}
+
+
+function opengithub () {
+  open $(github_project_root)
+}
 
 # -------
 # Functions
@@ -109,3 +148,5 @@ zle -N zle-keymap-select
 
 # Kill lag
 export KEYTIMEOUT=1
+alias rider="open -a rider"
+alias v="nvim"
