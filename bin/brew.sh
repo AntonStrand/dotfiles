@@ -13,8 +13,7 @@ else
 	echo "Homebrew is already installed..."
 fi
 
-# Install packages
-
+echo "Installing packages..."
 apps=(
 	awscli
 	bat
@@ -40,19 +39,10 @@ apps=(
 )
 
 installed_apps=$(brew list)
-echo "${installed_apps[@]}"
-
-declare -A uninstalled_apps
 
 for app in ${apps[@]}; do
-	(echo "${installed_apps[@]}" | fgrep -q "$app") && echo "$app is installed" || echo "$app is NOT installed"
+	(echo "${installed_apps[@]}" | fgrep -q "$app") && echo "$app is already installed" || brew install "${app}"
 done
-
-exit
-
-echo "Installing packages..."
-echo
-brew install "${apps[@]}"
 
 casks=(
 	bankid
@@ -67,12 +57,14 @@ casks=(
 )
 
 echo "Installing casks..."
-echo
-brew install --cask "${casks[@]}"
+installed_casks=$(brew list --cask)
+
+for cask in ${casks[@]}; do
+	(echo "${installed_casks[@]}" | fgrep -q "$cask") && echo "$cask is already installed" || brew install --cask "${cask}"
+done
 
 # Update and Upgrade
 echo "Updating and upgrading Homebrew..."
-echo
 yes | brew update
 yes | brew upgrade
 
