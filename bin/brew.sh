@@ -24,6 +24,7 @@ apps=(
 	git
 	git-delta
 	jq
+	lazygit
 	neovim
 	node
 	python
