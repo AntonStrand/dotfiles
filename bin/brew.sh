@@ -19,6 +19,7 @@ apps=(
 	bat
 	cask
 	elm
+	elm-format
 	fd
 	fzf
 	git
