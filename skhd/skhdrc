@@ -22,7 +22,7 @@ ctrl + alt - h : yabai -m window --swap west
 ctrl + alt - l : yabai -m window --swap east
 
 # maximize a window
-ctrl + alt - m : yabai -m window --toggle zoom-fullscreen
+ctrl + alt - return : yabai -m window --toggle zoom-fullscreen
 
 # balance out tree of windows (resize to occupy same area)
 ctrl + alt - e : yabai -m space --balance
