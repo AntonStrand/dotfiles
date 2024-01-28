@@ -6,6 +6,11 @@ ctrl + shift + alt - k : open -a kitty
 ctrl + shift + alt - s : open -a slack
 ctrl + shift + alt - m : open -a messenger
 ctrl + shift + alt - c : open /Applications/Google\ Chrome.app
+ctrl + shift + alt - p : open -a postico
+ctrl + shift + alt - y : open https://www.youtube.com
+ctrl + shift + alt - g : open https://www.github.com
+ctrl + shift + alt - d : open https://github.com/orgs/insurello/projects/26
+ctrl + shift + alt - w : open -a spotify
 
 # change window focus within space
 alt - x : yabai -m window --focus recent
