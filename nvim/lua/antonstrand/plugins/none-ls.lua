@@ -11,6 +11,7 @@ return {
 				none_ls.builtins.formatting.prettier,
 				none_ls.builtins.formatting.fantomas,
 				none_ls.builtins.formatting.shfmt,
+				none_ls.builtins.formatting.clang_format,
 				none_ls.builtins.diagnostics.eslint_d,
 			},
 			on_attach = function(client, bufnr)
