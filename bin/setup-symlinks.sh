@@ -5,6 +5,8 @@ echo "Adding symlinks"
 ln -nfs ~/dotfiles/zshrc ~/.zshrc
 ln -nfs ~/dotfiles/gitconfig ~/.gitconfig
 
+mkdir -p ~/.config
+
 ln -nfs ~/dotfiles/tmux ~/.config/tmux
 
 ln -nfs ~/dotfiles/nvim ~/.config/nvim
