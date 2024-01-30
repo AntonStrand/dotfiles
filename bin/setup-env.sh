@@ -43,5 +43,5 @@ fi
 # ZSH Autosuggestions
  [ ! -d ${ZSH_CUSTOM:-~/.oh-my-zsh/custom}/plugins/zsh-autosuggestion ] && git clone https://github.com/zsh-users/zsh-autosuggestions ${ZSH_CUSTOM:-~/.oh-my-zsh/custom}/plugins/zsh-autosuggestions
 
-sh ./brew.sh
-sh ./setup-symlinks.sh
+sh ./bin/brew.sh
+sh ./bin/setup-symlinks.sh
