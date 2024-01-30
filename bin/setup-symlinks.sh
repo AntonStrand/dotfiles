@@ -17,8 +17,5 @@ ln -nfs ~/dotfiles/yabai ~/.config/yabai
 
 ln -nfs ~/dotfiles/skhd ~/.config/skhd
 
-# Visual Studio Code
-ln -nfs ~/dotfiles/VSCode/* ~/Library/Application\ Support/Code/User/
-
 # initialize new settings
 source ~/.zshrc
