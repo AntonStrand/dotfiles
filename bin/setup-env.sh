@@ -45,4 +45,5 @@ fi
 
 zsh ./bin/brew.sh \
 && zsh ./bin/setup-symlinks.sh \
+&& zsh ./bin/install-tmux-plugins.sh \
 && zsh ./bin/start-services.sh
