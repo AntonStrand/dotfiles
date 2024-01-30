@@ -49,6 +49,9 @@ for app in ${apps[@]}; do
 	(echo "${installed_apps[@]}" | fgrep -q "$app") && echo "$app is already installed" || brew install "${app}"
 done
 
+# Make it possible to install fonts
+brew tap homebrew/cask-fonts
+
 casks=(
 	bankid
 	docker
