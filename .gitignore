@@ -1,3 +1,7 @@
 .DS_Store
 VSCode/globalStorage/
 VSCode/workspaceStorage/
+
+.env
+
+tmux/plugins/
