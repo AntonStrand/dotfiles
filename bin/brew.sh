@@ -33,7 +33,7 @@ apps=(
 	node
 	python
 	ripgrep
-	skhd
+	koekeishiya/formulae/skhd
 	starship
 	tmux
 	tree
