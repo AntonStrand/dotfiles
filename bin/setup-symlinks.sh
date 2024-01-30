@@ -3,6 +3,7 @@ echo "Adding symlinks"
 
 # Dotfiles
 ln -nfs ~/dotfiles/zshrc ~/.zshrc
+
 ln -nfs ~/dotfiles/gitconfig ~/.gitconfig
 
 mkdir -p ~/.config
