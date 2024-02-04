@@ -15,5 +15,8 @@ vim.opt.shiftwidth = 2
 vim.opt.shiftround = true
 vim.opt.expandtab = true
 
+-- Enable ignorecase + smartcase for better searching
+vim.opt.ignorecase = true
+vim.opt.smartcase = true
 -- Enable copy/paste to clipboard
 vim.cmd([[ set clipboard+=unnamedplus ]])
