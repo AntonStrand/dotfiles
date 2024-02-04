@@ -18,5 +18,9 @@ vim.opt.expandtab = true
 -- Enable ignorecase + smartcase for better searching
 vim.opt.ignorecase = true
 vim.opt.smartcase = true
+
+-- Set completeopt to have a better completion experience
+vim.opt.completeopt = { "menuone", "noselect" }
+
 -- Enable copy/paste to clipboard
 vim.cmd([[ set clipboard+=unnamedplus ]])
