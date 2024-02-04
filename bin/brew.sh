@@ -23,6 +23,8 @@ apps=(
 	awscli
 	bat
 	cask
+	cfn-lint
+	cmake
 	elm
 	elm-format
 	fd
@@ -30,12 +32,16 @@ apps=(
 	git
 	git-delta
 	jq
+	koekeishiya/formulae/skhd
 	lazygit
 	neovim
 	node
+	nvm
+	postgresql
 	python
 	ripgrep
-	koekeishiya/formulae/skhd
+	shellcheck
+	shfmt
 	starship
 	tmux
 	tree
@@ -55,12 +61,16 @@ done
 brew tap homebrew/cask-fonts
 
 casks=(
+	1password
 	bankid
 	docker
+	dotnet-sdk
 	font-hack-nerd-font
 	google-chrome
 	kitty
+	microsoft-teams
 	postico
+	slack
 	spotify
 	tunnelblick
 	visual-studio-code
