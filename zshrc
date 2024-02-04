@@ -16,6 +16,23 @@ ZSH_AUTOSUGGEST_HIGHLIGHT_STYLE="fg=#667c94"
 
 source $ZSH/oh-my-zsh.sh
 
+alias v="nvim"
+
+# Edit dotfiles
+# Move to dotfiles directory and open nvim and move back when done.
+# The reason being that telescope and other plugins require the current working directory to be the project root.
+function vd () {
+  echo "Editing dotfiles"
+  current_dir=$PWD
+  cd ~/dotfiles
+  echo $PWD
+  nvim .
+  cd $current_dir
+}
+
+# Vim .
+alias v.="nvim ."
+
 alias tn="tmux new -s $(basename $PWD)"
 
 # List all with color
@@ -149,4 +166,3 @@ zle -N zle-keymap-select
 # Kill lag
 export KEYTIMEOUT=1
 alias rider="open -a rider"
-alias v="nvim"
