@@ -22,5 +22,8 @@ vim.opt.smartcase = true
 -- Set completeopt to have a better completion experience
 vim.opt.completeopt = { "menuone", "noselect" }
 
+-- Enable persistent undo history
+vim.opt.undofile = true
+
 -- Enable copy/paste to clipboard
 vim.cmd([[ set clipboard+=unnamedplus ]])
