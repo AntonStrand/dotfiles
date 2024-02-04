@@ -152,10 +152,8 @@ function gi () {
 set -o vi
 bindkey -v
 
-# Show current mode in prompt
+# Reset prompt when swiching vim modes
 function zle-line-init zle-keymap-select {
-  VIM_PROMPT="%{$fg_bold[cyan]%} [% NORMAL]% %{$reset_color%}"
-  RPS1="${${KEYMAP/vicmd/$VIM_PROMPT}/(main|viins)/} $EPS1"
   zle reset-prompt
 }
 
