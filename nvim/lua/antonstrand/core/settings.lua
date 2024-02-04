@@ -28,5 +28,8 @@ vim.opt.undofile = true
 -- Enable 24-bit color
 vim.opt.termguicolors = true
 
+-- Enable the sign column to prevent the screen from jumping
+vim.opt.signcolumn = "yes"
+
 -- Enable copy/paste to clipboard
 vim.cmd([[ set clipboard+=unnamedplus ]])
