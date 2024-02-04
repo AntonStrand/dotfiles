@@ -163,4 +163,3 @@ zle -N zle-keymap-select
 
 # Kill lag
 export KEYTIMEOUT=1
-alias rider="open -a rider"
