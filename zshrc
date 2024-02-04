@@ -113,13 +113,13 @@ function opengithub () {
 # -------
 
 # ll after cd
-chpwd() { 
+function chpwd() { 
   echo $PWD contains:
   ll
 }
 
 # Create and move into directory
-mcd () {
+function mcd () {
   mkdir -p $1
   cd $1
 }
