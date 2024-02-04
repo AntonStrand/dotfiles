@@ -1,9 +1,13 @@
 return {
-  "nvim-lualine/lualine.nvim",
-  dependencies = { "nvim-tree/nvim-web-devicons" },
-  config = function()
-    local lualine = require("lualine")
-    local lazy_status = require("lazy.status") -- to configure lazy pending updates count
+  -- Dependency to show copilot status in lualine.
+  { "AndreM222/copilot-lualine" },
+  {
+    "nvim-lualine/lualine.nvim",
+    dependencies = { "nvim-tree/nvim-web-devicons" },
+    config = function()
+      local lualine = require("lualine")
+      -- to configure lazy pending updates count
+      local lazy_status = require("lazy.status")
 
     local colors = {
       blue = "#65D1FF",
@@ -61,12 +65,43 @@ return {
             lazy_status.updates,
             cond = lazy_status.has_updates,
             color = { fg = "#ff9e64" },
+          lualine_x = {
+            {
+              "copilot",
+              symbols = {
+                status = {
+                  icons = {
+                    enabled = "",
+                    sleep = "",
+                    disabled = "",
+                    warning = "",
+                    unknown = "",
+                  },
+                  hl = {
+                    enabled = mocha.green,
+                    sleep = mocha.green,
+                    disabled = mocha.overlay0,
+                    warning = mocha.peach,
+                    unknown = mocha.red,
+                  },
+                },
+                spinners = require("copilot-lualine.spinners").dots,
+                spinner_color = mocha.green,
+              },
+              show_colors = true,
+              show_loading = true,
+            },
+            {
+              -- Show number of plugins that needs to be updated if there are any
+              lazy_status.updates,
+              cond = lazy_status.has_updates,
+              color = { fg = mocha.maroon },
+            },
+            "encoding",
+            "filetype",
           },
-          { "encoding" },
-          { "fileformat" },
-          { "filetype" },
         },
-      },
-    })
-  end,
+      })
+    end,
+  },
 }
