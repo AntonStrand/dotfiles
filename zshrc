@@ -16,6 +16,8 @@ ZSH_AUTOSUGGEST_HIGHLIGHT_STYLE="fg=#667c94"
 
 source $ZSH/oh-my-zsh.sh
 
+# Add .NET Core SDK tools
+export PATH="$PATH:/Users/antonstrand/.dotnet/tools"
 alias v="nvim"
 
 # Edit dotfiles
