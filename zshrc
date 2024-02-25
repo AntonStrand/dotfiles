@@ -18,6 +18,9 @@ source $ZSH/oh-my-zsh.sh
 
 # Add .NET Core SDK tools
 export PATH="$PATH:/Users/antonstrand/.dotnet/tools"
+# Set Neovim as the default editor
+export EDITOR="nvim"
+
 alias v="nvim"
 
 # Edit dotfiles
