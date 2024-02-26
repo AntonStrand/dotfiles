@@ -69,6 +69,15 @@ return {
 			vim.fn.sign_define(hl, { text = icon, texthl = hl, numhl = "" })
 		end
 
+		-- configure Ionide / FSharp server
+		require("ionide").setup({
+			capabilities = capabilities,
+			on_attach = function(client, bufnr)
+				on_attach(client, bufnr)
+				vim.lsp.codelens.refresh()
+			end,
+		})
+
 		-- configure elm server
 		lspconfig["elmls"].setup({
 			capabilities = capabilities,

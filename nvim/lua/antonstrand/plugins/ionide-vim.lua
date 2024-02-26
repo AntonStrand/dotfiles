@@ -1,4 +1,5 @@
 return {
-  "ionide/Ionide-vim",
-  ft = "fsharp",
+	"ionide/ionide-vim",
+	ft = "fsharp",
+	dependencies = { "neovim/nvim-lspconfig" },
 }
