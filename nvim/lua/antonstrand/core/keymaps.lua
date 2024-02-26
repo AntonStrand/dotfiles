@@ -22,4 +22,4 @@ vim.keymap.set("n", "*", "*zz")
 vim.keymap.set("n", "#", "#zz")
 
 -- Generate uuid
-vim.keymap.set("n", "<leader>ug", ":!uuidgen | pbcopy<CR><CR>")
+vim.keymap.set("n", "<leader>ug", ":!uuidgen | pbcopy<CR><CR>", { desc = "Generate UUID" })
