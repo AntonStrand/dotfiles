@@ -4,6 +4,8 @@ return {
 	dependencies = {
 		"hrsh7th/cmp-nvim-lsp",
 		{ "antosha417/nvim-lsp-file-operations", config = true },
+		-- Neovim LSP
+		{ "folke/neodev.nvim", opts = {} },
 	},
 	config = function()
 		-- import lspconfig plugin
@@ -111,6 +113,10 @@ return {
 						library = {
 							[vim.fn.expand("$VIMRUNTIME/lua")] = true,
 							[vim.fn.stdpath("config") .. "/lua"] = true,
+						},
+						-- Use Neodev in config files
+						completion = {
+							callSnippet = "Replace",
 						},
 					},
 				},
