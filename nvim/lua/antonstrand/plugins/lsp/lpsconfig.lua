@@ -84,6 +84,37 @@ return {
 			vim.fn.sign_define(hl, { text = icon, texthl = hl, numhl = "" })
 		end
 
+		vim.diagnostic.config({
+			source = false,
+			virtual_text = {
+				spacing = 2,
+				-- format = function(_) return "" end,
+				format = function(diagnostic)
+					-- Only show a short message for warnings and errors
+					if
+						diagnostic.severity == vim.diagnostic.severity.WARN
+						or diagnostic.severity == vim.diagnostic.severity.ERROR
+					then
+						local first_line = diagnostic.message:gmatch("[^\n]*")()
+						local first_sentence = string.match(first_line, "(.-%. )") or first_line
+						local first_lhs = string.match(first_sentence, "(.-): ") or first_sentence
+						return first_lhs
+					end
+					-- Don't show any message for info or hint
+					return ""
+				end
+			},
+			float = {
+				header = "",
+				source = false,
+				border = "rounded",
+				format = function(diagnostic)
+					-- Some diagnostics in F# are multiline but rendered as single line, this will make them easier to read.
+					return vim.fn.substitute(diagnostic.message, '\\s\\{2,}', '\n\n  ', 'g')
+				end,
+			},
+		})
+
 		-- configure Ionide / FSharp server
 		require("ionide").setup({
 			capabilities = capabilities,
