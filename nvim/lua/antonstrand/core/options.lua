@@ -34,5 +34,11 @@ vim.opt.signcolumn = "yes"
 -- Always keep 8 lines above/below cursor unless at start/end of file
 vim.opt.scrolloff = 8
 
+-- Always keep cursor 8 characters from horizontal edge unless at start/end of file
+vim.opt.sidescrolloff = 8
+
+-- O and o, don't continue comments
+vim.cmd([[autocmd FileType * set formatoptions-=o]])
+
 -- Enable copy/paste to clipboard
 vim.cmd([[ set clipboard+=unnamedplus ]])
