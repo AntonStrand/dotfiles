@@ -59,6 +59,19 @@ return {
 
 			opts.desc = "Restart LSP"
 			keymap.set("n", "<leader>rs", ":LspRestart<CR>", opts) -- mapping to restart lsp if necessary
+
+			-- Format on save
+			vim.api.nvim_buf_create_user_command(bufnr, "Format", function(_)
+				vim.lsp.buf.format({
+					-- Increase timeout to be able to handle larger files.
+					timeout_ms = 2000,
+					bufnr = bufnr,
+					filter = function(client)
+						return client.name == "null-ls"
+					end,
+				})
+				print("File formatted")
+			end, { desc = "Format current buffer with LSP" })
 		end
 
 		-- used to enable autocompletion (assign to every lsp server config)
