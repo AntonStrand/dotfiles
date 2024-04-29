@@ -49,5 +49,20 @@ local function camel_case()
 	end
 end
 
+local function pascal_case()
+	local word = vim.fn.expand("<cword>")
+
+	if is_camel_case(word) then
+		replace_word(first_upper(word))
+	elseif is_snake_case(word) then
+		local camel_case_word = snake_case_to_camel(word)
+		replace_word(first_upper(camel_case_word))
+	else
+		print("Unable to convert to PascalCase")
+	end
+end
+
 vim.api.nvim_create_user_command("ToCamelCase", camel_case, {})
+vim.api.nvim_create_user_command("ToPascalCase", pascal_case, {})
 vim.keymap.set("n", "<leader>tc", camel_case, { noremap = true, silent = true, desc = "Convert to camelCase" })
+vim.keymap.set("n", "<leader>tp", pascal_case, { noremap = true, silent = true, desc = "Convert to PascalCase" })
