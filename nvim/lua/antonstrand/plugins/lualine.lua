@@ -137,13 +137,18 @@ return {
 							path = 0, -- Filename and parent dir, with tilde as the home directory
 							symbols = {
 								newfile = "", -- Icon to show when the file is new.
-                readonly = "", -- Icon to show when the file is read only.
-                unnamed = "", -- No icon to show when the file is unnamed.
-                modified = "", -- Icon to show when the file is modified.
+								readonly = "", -- Icon to show when the file is read only.
+								unnamed = "", -- No icon to show when the file is unnamed.
+								modified = "", -- Icon to show when the file is modified.
 							},
 						},
 						"diagnostics",
-						{ require("arrow.statusline").text_for_statusline_with_icons },
+						{
+							function()
+								local bufnr = vim.api.nvim_get_current_buf()
+								return require("arrow.statusline").text_for_statusline_with_icons(bufnr)
+							end,
+						},
 					},
 					lualine_x = {
 						{
