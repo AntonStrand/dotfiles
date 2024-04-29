@@ -27,3 +27,23 @@ vim.keymap.set("n", "<leader>ug", ":!uuidgen | pbcopy<CR><CR>", { desc = "Genera
 -- Move selected lines with shift+j or shift+k
 vim.keymap.set("v", "J", ":m '>+1<CR>gv=gv")
 vim.keymap.set("v", "K", ":m '<-2<CR>gv=gv")
+
+-- Toggle boolean
+vim.keymap.set("n", "<leader>tb", function()
+	local line = vim.api.nvim_get_current_line()
+	if line:match("true") then
+		local new_line = line:gsub("true", "false")
+		vim.api.nvim_set_current_line(new_line)
+	elseif line:match("false") then
+		local new_line = line:gsub("false", "true")
+		vim.api.nvim_set_current_line(new_line)
+
+	-- Also support Elm's True and False
+	elseif line:match("True") then
+		local new_line = line:gsub("True", "False")
+		vim.api.nvim_set_current_line(new_line)
+	elseif line:match("False") then
+		local new_line = line:gsub("False", "True")
+		vim.api.nvim_set_current_line(new_line)
+	end
+end, { desc = "Toggle boolean" })
