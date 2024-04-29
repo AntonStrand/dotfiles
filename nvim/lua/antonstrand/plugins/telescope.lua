@@ -56,5 +56,6 @@ return {
 			"<cmd>Telescope grep_string<cr>",
 			{ desc = "Find string under cursor in cwd" }
 		)
+		vim.keymap.set("n", "<leader>fh", "<cmd>Telescope help_tags<cr>", { desc = "Find help" })
 	end,
 }
