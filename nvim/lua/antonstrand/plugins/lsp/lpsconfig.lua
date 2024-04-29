@@ -106,7 +106,7 @@ return {
 				border = "rounded",
 				format = function(diagnostic)
 					-- Some diagnostics in F# are multiline but rendered as single line, this will make them easier to read.
-					return vim.fn.substitute(diagnostic.message, '\\s\\{2,}', '\n\n  ', 'g')
+					return vim.fn.substitute(diagnostic.message, "\\s\\{2,}", "\n\n  ", "g")
 				end,
 			},
 		})
