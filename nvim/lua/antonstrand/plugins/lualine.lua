@@ -122,7 +122,7 @@ return {
 					lualine_c = {
 						{
 							get_project_root,
-							icon = "",
+							icon = " ",
 							separator = "",
 							color = { fg = mocha.overlay1 },
 						},
