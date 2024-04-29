@@ -8,10 +8,8 @@ return {
 		{ "folke/neodev.nvim", opts = {} },
 	},
 	config = function()
-		-- import lspconfig plugin
 		local lspconfig = require("lspconfig")
 
-		-- import cmp-nvim-lsp plugin
 		local cmp_nvim_lsp = require("cmp_nvim_lsp")
 
 		local keymap = vim.keymap -- for conciseness
@@ -63,8 +61,6 @@ return {
 			-- Format on save
 			vim.api.nvim_buf_create_user_command(bufnr, "Format", function(_)
 				vim.lsp.buf.format({
-					-- Increase timeout to be able to handle larger files.
-					timeout_ms = 2000,
 					bufnr = bufnr,
 					filter = function(client)
 						return client.name == "null-ls"
@@ -102,7 +98,7 @@ return {
 					end
 					-- Don't show any message for info or hint
 					return ""
-				end
+				end,
 			},
 			float = {
 				header = "",
