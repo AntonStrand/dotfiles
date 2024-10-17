@@ -1,7 +1,7 @@
 # restart Yabi, SpaceBar, and SKHD
-alt + shift - r : \
-    killall yabai&&yabai --start-service&&skhd --restart-service
-# open kitty terminal
+alt + shift - r : killall yabai&&yabai --start-service&&skhd --restart-service
+
+# open applications and websites
 ctrl + shift + alt - k : open -a kitty
 ctrl + shift + alt - s : open -a slack
 ctrl + shift + alt - m : open -a messenger
@@ -20,11 +20,18 @@ alt - k : yabai -m window --focus north
 alt - l : yabai -m window --focus east
 alt - a : yabai -m window --focus stack.prev || yabai -m window --focus stack.last
 alt - f : yabai -m window --focus stack.next || yabai -m window --focus stack.first
+
 # swap windows
 ctrl + alt - j : yabai -m window --swap south
 ctrl + alt - k : yabai -m window --swap north
 ctrl + alt - h : yabai -m window --swap west
 ctrl + alt - l : yabai -m window --swap east
+
+# Move window in a space
+ctrl + shift + alt - j : yabai -m window --warp south
+ctrl + shift + alt - k : yabai -m window --warp north
+ctrl + shift + alt - h : yabai -m window --warp west
+ctrl + shift + alt - l : yabai -m window --warp east
 
 # maximize a window
 ctrl + alt - return : yabai -m window --toggle zoom-fullscreen
@@ -41,16 +48,61 @@ alt - s : yabai -m window --toggle sticky
 # rotate tree
 alt - r : yabai -m space --rotate 90
 
+# move focus to display left and right
+ctrl + alt - w : yabai -m display --focus prev;
+ctrl + alt - e : yabai -m display --focus next;
+ctrl + alt - r : yabai -m display --focus recent;
+
 # move window to display left and right
 ctrl + alt + shift - w : yabai -m window --display west; yabai -m display --focus west;
 ctrl + alt + shift - e : yabai -m window --display east; yabai -m display --focus east;
 
 #move window to prev and next space
-ctrl + alt - p : yabai -m window --space prev;
-ctrl + alt - n : yabai -m window --space next;
+ctrl + alt - p : yabai -m window --space prev; yabai -m space --focus prev
+ctrl + alt - n : yabai -m window --space next; yabai -m space --focus next
 
 # change layout of desktop
 alt + shift - e : yabai -m space --layout bsp
 alt + shift - s : yabai -m space --layout stack
 alt + shift - f : yabai -m space --layout float
 
+# create desktop, move window and follow focus - uses jq for parsing json (brew install jq)
+alt + shift - n : yabai -m space --create && \
+                  index="$(yabai -m query --spaces --display | jq 'map(select(."is-native-fullscreen" == false))[-1].index')" && \
+                  yabai -m window --space "${index}" && \
+                  yabai -m space --focus "${index}"
+
+# Move to space
+ctrl + alt - 1 : yabai -m space --focus 1
+ctrl + alt - 2 : yabai -m space --focus 2
+ctrl + alt - 3 : yabai -m space --focus 3
+ctrl + alt - 4 : yabai -m space --focus 4
+ctrl + alt - 5 : yabai -m space --focus 5
+ctrl + alt - 6 : yabai -m space --focus 6
+ctrl + alt - 7 : yabai -m space --focus 7
+ctrl + alt - 8 : yabai -m space --focus 8
+ctrl + alt - 9 : yabai -m space --focus 9
+ctrl + alt - a : yabai -m space --focus recent
+ctrl + alt - f : yabai -m space --focus next
+
+# Move window and focus to space
+ctrl + shift + alt - 1 : yabai -m window --space 1 && yabai -m space --focus 1
+ctrl + shift + alt - 2 : yabai -m window --space 2 && yabai -m space --focus 2
+ctrl + shift + alt - 3 : yabai -m window --space 3 && yabai -m space --focus 3
+ctrl + shift + alt - 4 : yabai -m window --space 4 && yabai -m space --focus 4
+ctrl + shift + alt - 5 : yabai -m window --space 5 && yabai -m space --focus 5
+ctrl + shift + alt - 6 : yabai -m window --space 6 && yabai -m space --focus 6
+ctrl + shift + alt - 7 : yabai -m window --space 7 && yabai -m space --focus 7
+ctrl + shift + alt - 8 : yabai -m window --space 8 && yabai -m space --focus 8
+ctrl + shift + alt - 9 : yabai -m window --space 9 && yabai -m space --focus 9
+
+# toggle window split type
+alt - e : yabai -m window --toggle split
+
+# increase window size
+# shift + alt - a : yabai -m window --resize left:-20:0
+# shift + alt - w : yabai -m window --resize top:0:-20
+
+# decrease window size
+# shift + cmd <S-D-s><S-D-s> s : yabai -m window --resize bottom:0:-20
+# shift + cmd - w : yabai -m window --resize top:0:20
