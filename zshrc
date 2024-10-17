@@ -1,6 +1,8 @@
 # Path to the oh-my-zsh installation.
 export ZSH=$HOME/.oh-my-zsh
 
+alias scryer=$HOME/scryer-prolog/target/release/scryer-prolog
+
 eval "$(starship init zsh)"
 eval "$(zoxide init zsh)"
 
