@@ -58,7 +58,7 @@ return {
 			opts.desc = "Restart LSP"
 			keymap.set("n", "<leader>rs", ":LspRestart<CR>", opts) -- mapping to restart lsp if necessary
 
-			-- Format on save
+			-- Format using `:Format`
 			vim.api.nvim_buf_create_user_command(bufnr, "Format", function(_)
 				vim.lsp.buf.format({
 					bufnr = bufnr,
@@ -133,7 +133,7 @@ return {
 		})
 
 		-- configure typescript server with plugin
-		lspconfig["tsserver"].setup({
+		lspconfig["ts_ls"].setup({
 			capabilities = capabilities,
 			on_attach = on_attach,
 		})
