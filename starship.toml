@@ -1,0 +1,93 @@
+"$schema" = 'https://starship.rs/config-schema.json'
+
+format = """
+[](surface0)\
+$directory\
+[](bg:purple fg:surface0)\
+$git_branch\
+$git_metrics\
+$git_status\
+[ ](fg:purple)\
+$line_break\
+$character
+"""
+
+add_newline = true
+
+palette = 'catppuccin_mocha'
+
+[palettes.catppuccin_mocha]
+rosewater = "#f5e0dc"
+flamingo = "#f2cdcd"
+pink = "#f5c2e7"
+orange = "#cba6f7"
+red = "#f38ba8"
+maroon = "#eba0ac"
+peach = "#fab387"
+yellow = "#f9e2af"
+green = "#a6e3a1"
+teal = "#94e2d5"
+sky = "#89dceb"
+sapphire = "#74c7ec"
+blue = "#89b4fa"
+lavender = "#b4befe"
+text = "#cdd6f4"
+subtext1 = "#bac2de"
+subtext0 = "#a6adc8"
+overlay2 = "#9399b2"
+overlay1 = "#7f849c"
+overlay0 = "#6c7086"
+surface2 = "#585b70"
+surface1 = "#45475a"
+surface0 = "#313244"
+base = "#1e1e2e"
+mantle = "#181825"
+crust = "#11111b"
+
+[username]
+show_always = true
+style_user = "bg:surface0 fg:text"
+style_root = "bg:surface0 fg:text"
+format = '[ $user ]($style)'
+
+[directory]
+style = "fg:text bg:surface0"
+format = "[ $path ]($style)"
+
+# truncation_length = 3
+# truncation_symbol = "…/"
+
+# [directory.substitutions]
+# "Documents" = "󰈙 "
+# "Downloads" = " "
+# "Music" = "󰝚 "
+# "Pictures" = " "
+# "work" = "󰲋 "
+# "dotfiles" = "󱁻 dotfiles"
+
+[git_branch]
+symbol = ""
+style = "bg:purple"
+format = '[[ $symbol $branch ](fg:base bg:purple)]($style)'
+
+[git_metrics]
+format = '[+$added/-$deleted](fg:base bg:purple)'
+
+[git_status]
+style = "bg:purple"
+format = '[[($all_status$ahead_behind )](fg:base bg:purple)]($style)'
+
+[character]
+disabled = false
+success_symbol = '[](fg:bold green)'
+error_symbol = '[](fg:bold green)'
+vimcmd_symbol = '[](fg:bold blue)'
+vimcmd_visual_symbol = '[](fg:bold purple)'
+
+
+# [character]
+# disabled = false
+# success_symbol = '[](fg:purple bg:green)[ INSERT ](fg:bold surface0 bg:green)[](fg:green)'
+# error_symbol = '[](fg:purple bg:green)[ INSERT ](fg:bold surface0 bg:green)[](fg:green)'
+# vimcmd_symbol = '[](fg:purple bg:blue)[ NORMAL ](fg:bold surface0 bg:blue)[](fg:blue)'
+# vimcmd_visual_symbol = '[](fg:purple bg:purple)[ NORMAL ](fg:bold surface0 bg:purple)[](fg:purple)'
