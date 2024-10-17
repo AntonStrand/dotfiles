@@ -3,7 +3,7 @@
 local function lsp_name()
 	local name = "No Active Lsp"
 	local buf_ft = vim.api.nvim_buf_get_option(0, "filetype")
-	local clients = vim.lsp.get_active_clients()
+	local clients = vim.lsp.get_clients()
 	if next(clients) == nil then
 		return name
 	end
@@ -14,42 +14,6 @@ local function lsp_name()
 		end
 	end
 	return name
-end
-
-local function lsp_progress()
-	local messages = vim.lsp.util.get_progress_messages()
-	if #messages == 0 then
-		return
-	end
-	local status = {}
-	status[lsp_name()] = 1
-	for _, msg in pairs(messages) do
-		-- Ignore "empty title" and duplicate entries
-		if msg.title ~= "empty title" then
-			if msg.percentage == nil then
-				status[(msg.title or "")] = 1
-			else
-				status[(msg.percentage .. "%% " .. (msg.title or ""))] = 1
-			end
-		end
-	end
-	local unique_status = {}
-	for title, _ in pairs(status) do
-		table.insert(unique_status, title)
-	end
-	local spinners = { "⠋", "⠙", "⠹", "⠸", "⠼", "⠴", "⠦", "⠧", "⠇", "⠏" }
-	local ms = vim.loop.hrtime() / 1000000
-	local frame = math.floor(ms / 120) % #spinners
-	return table.concat(unique_status, " | ") .. " " .. spinners[frame + 1]
-end
-
-local function lsp_status()
-	local progress = lsp_progress()
-	if progress then
-		return progress
-	else
-		return lsp_name()
-	end
 end
 
 -- PROJECT DIRECTORY
@@ -188,7 +152,8 @@ return {
 						{
 							-- Show the current lsp status
 							icon = "",
-							lsp_status,
+							lsp_name,
+							-- lsp_status,
 						},
 						"progress",
 					},
