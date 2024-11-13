@@ -6,6 +6,9 @@ alias scryer=$HOME/scryer-prolog/target/release/scryer-prolog
 eval "$(starship init zsh)"
 eval "$(zoxide init zsh)"
 
+# Set up fzf key bindings and fuzzy completion
+source <(fzf --zsh)
+
 # Plugins
 plugins=(
   git
