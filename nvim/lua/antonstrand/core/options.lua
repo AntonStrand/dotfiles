@@ -41,4 +41,4 @@ vim.opt.sidescrolloff = 8
 vim.cmd([[autocmd FileType * set formatoptions-=o]])
 
 -- Enable copy/paste to clipboard
-vim.cmd([[ set clipboard+=unnamedplus ]])
+-- vim.cmd([[ set clipboard+=unnamedplus ]])
