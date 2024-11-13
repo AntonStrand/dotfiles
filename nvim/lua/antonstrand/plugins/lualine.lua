@@ -19,19 +19,18 @@ end
 -- PROJECT DIRECTORY
 
 -- Store the path and directory in a cache to avoid recalculating it
-local cache_path = nil
-local current_directory = nil
+local paths_cache = {}
 
 local function get_project_root()
-	local cur_path = vim.fn.expand("%:p")
+	local current_buffer = vim.fn.bufnr()
 
 	-- Avoid recalculating the directory if the path hasn't changed
-	if cur_path == cache_path then
-		return current_directory
+	if paths_cache[current_buffer] ~= nil then
+		return paths_cache[current_buffer]
 	end
 
-	cache_path = cur_path
-	current_directory = vim.fn.fnamemodify(vim.fn.getcwd(), ":t")
+	local current_directory = vim.fn.fnamemodify(vim.fn.getcwd(), ":t")
+	local cur_path = vim.fn.expand("%:p")
 
 	-- Find current submodule first
 	local git_path = vim.fs.find(".git", {
@@ -42,6 +41,7 @@ local function get_project_root()
 
 	-- Not in a git repo
 	if git_path == nil then
+		paths_cache[current_buffer] = current_directory
 		return current_directory
 	end
 
@@ -49,10 +49,11 @@ local function get_project_root()
 
 	-- Show the name of the current directory instead of .
 	if git_dir_name == "." then
+		paths_cache[current_buffer] = current_directory
 		return current_directory
 	end
 
-	current_directory = git_dir_name
+	paths_cache[current_buffer] = git_dir_name
 	return git_dir_name
 end
 
