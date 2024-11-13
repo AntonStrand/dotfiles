@@ -19,6 +19,10 @@ local function to_snake_case(word)
 	return word:gsub("([a-z])([A-Z])", "%1_%2"):lower()
 end
 
+local function to_sentence_case(word)
+	return word:gsub("([a-z])([A-Z])", "%1 %2"):lower()
+end
+
 local function first_upper(word)
 	return word:sub(1, 1):upper() .. word:sub(2)
 end
@@ -72,10 +76,24 @@ local function snake_case()
 	end
 end
 
+local function sentence_case()
+	local word = vim.fn.expand("<cword>")
+
+	if is_camel_case(word) or is_pascal_case(word) then
+		replace_word(to_sentence_case(word))
+	elseif is_snake_case(word) then
+		replace_word(to_sentence_case(snake_case_to_camel(word)))
+	else
+		print("Unable to convert to sentence")
+	end
+end
+
 vim.api.nvim_create_user_command("ToCamelCase", camel_case, {})
 vim.api.nvim_create_user_command("ToPascalCase", pascal_case, {})
 vim.api.nvim_create_user_command("ToSnakeCase", snake_case, {})
+vim.api.nvim_create_user_command("ToSentenceCase", sentence_case, {})
 
 vim.keymap.set("n", "<leader>tc", camel_case, { noremap = true, silent = true, desc = "Convert to camelCase" })
 vim.keymap.set("n", "<leader>tp", pascal_case, { noremap = true, silent = true, desc = "Convert to PascalCase" })
 vim.keymap.set("n", "<leader>ts", snake_case, { noremap = true, silent = true, desc = "Convert to snake_case" })
+vim.keymap.set("n", "<leader>tm", sentence_case, { noremap = true, silent = true, desc = "Convert to sentence" })
