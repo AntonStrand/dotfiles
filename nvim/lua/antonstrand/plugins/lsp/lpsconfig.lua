@@ -80,7 +80,30 @@ return {
 			vim.fn.sign_define(hl, { text = icon, texthl = hl, numhl = "" })
 		end
 
+		-- Specify how the border looks like
+		local border = {
+			{ "╭", "FloatBorder" },
+			{ "─", "FloatBorder" },
+			{ "╮", "FloatBorder" },
+			{ "│", "FloatBorder" },
+			{ "╯", "FloatBorder" },
+			{ "─", "FloatBorder" },
+			{ "╰", "FloatBorder" },
+			{ "│", "FloatBorder" },
+		}
+
+		-- Add the border on hover and on signature help
+		local handlers = {
+			["textDocument/hover"] = vim.lsp.with(vim.lsp.handlers.hover, { border = border }),
+			["textDocument/signatureHelp"] = vim.lsp.with(vim.lsp.handlers.signature_help, { border = border }),
+		}
+
+		require("lspconfig.ui.windows").default_options = {
+			border = border,
+		}
+
 		vim.diagnostic.config({
+			handlers = handlers,
 			source = false,
 			virtual_text = {
 				spacing = 2,
@@ -103,7 +126,7 @@ return {
 			float = {
 				header = "",
 				source = false,
-				border = "rounded",
+				border = border,
 				format = function(diagnostic)
 					-- Some diagnostics in F# are multiline but rendered as single line, this will make them easier to read.
 					return vim.fn.substitute(diagnostic.message, "\\s\\{2,}", "\n\n  ", "g")
@@ -113,6 +136,7 @@ return {
 
 		-- configure Ionide / FSharp server
 		require("ionide").setup({
+			handlers = handlers,
 			capabilities = capabilities,
 			on_attach = function(client, bufnr)
 				on_attach(client, bufnr)
@@ -122,24 +146,28 @@ return {
 
 		-- configure elm server
 		lspconfig["elmls"].setup({
+			handlers = handlers,
 			capabilities = capabilities,
 			on_attach = on_attach,
 		})
 
 		-- configure html server
 		lspconfig["html"].setup({
+			handlers = handlers,
 			capabilities = capabilities,
 			on_attach = on_attach,
 		})
 
 		-- configure typescript server with plugin
 		lspconfig["ts_ls"].setup({
+			handlers = handlers,
 			capabilities = capabilities,
 			on_attach = on_attach,
 		})
 
 		-- configure lua server (with special settings)
 		lspconfig["lua_ls"].setup({
+			handlers = handlers,
 			capabilities = capabilities,
 			on_attach = on_attach,
 			settings = { -- custom settings for lua
