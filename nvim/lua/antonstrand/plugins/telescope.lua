@@ -69,5 +69,6 @@ return {
 			{ desc = "Find string under cursor in cwd" }
 		)
 		vim.keymap.set("n", "<leader>fh", "<cmd>Telescope help_tags<cr>", { desc = "Find help" })
+		vim.keymap.set("n", "<leader>fq", "<cmd>Telescope registers<cr>", { desc = "Open registers" })
 	end,
 }
