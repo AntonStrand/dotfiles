@@ -1,5 +1,7 @@
 # Path to the oh-my-zsh installation.
 export ZSH=$HOME/.oh-my-zsh
+# export PATH=$PATH:$HOME/.local/share/nvim/mason/packages/lua-language-server
+
 
 alias scryer=$HOME/scryer-prolog/target/release/scryer-prolog
 
