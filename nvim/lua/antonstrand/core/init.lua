@@ -1,5 +1,5 @@
 require("antonstrand.core.options")
 require("antonstrand.core.keymaps")
 require("antonstrand.core.fsharp")
-require("antonstrand.core.highligt_yank")
+require("antonstrand.core.highlight_yank")
 require("antonstrand.core.switch_case")
