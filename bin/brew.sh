@@ -49,6 +49,7 @@ apps=(
 	wget
 	yabai
 	zoxide
+	lua-language-server
 )
 
 installed_apps=$(brew list)
