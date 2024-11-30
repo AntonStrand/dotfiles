@@ -40,5 +40,8 @@ vim.opt.sidescrolloff = 8
 -- O and o, don't continue comments
 vim.cmd([[autocmd FileType * set formatoptions-=o]])
 
+-- Set spell languanges but spell is opt in.
+vim.opt.spelllang = "en_us,sv"
+
 -- Enable copy/paste to clipboard
 -- vim.cmd([[ set clipboard+=unnamedplus ]])
