@@ -115,6 +115,9 @@ function newpr () {
   open $(github_project_root)/pull/new/$(current_branch)/$(current_directory)
 }
 
+function openpr () {
+  open $(github_project_root)/pull/$(current_branch)/$(current_directory)
+}
 
 function opengithub () {
   open $(github_project_root)
