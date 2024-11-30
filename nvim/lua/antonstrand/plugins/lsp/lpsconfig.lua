@@ -171,6 +171,14 @@ return {
 			capabilities = capabilities,
 			on_attach = on_attach,
 		})
+
+		-- configure gleam server
+		lspconfig["gleam"].setup({
+			handlers = handlers,
+			capabilities = capabilities,
+			on_attach = on_attach,
+		})
+
 		-- configure lua server (with special settings)
 		lspconfig["lua_ls"].setup({
 			handlers = handlers,
