@@ -1,4 +1,10 @@
+local function close_db()
+	vim.cmd("DBUIClose")
+	vim.cmd("tabclose")
+end
+
 vim.api.nvim_create_user_command("OpenDB", ":tabnew | DBUI", { nargs = 0 })
+vim.api.nvim_create_user_command("CloseDB", close_db, { nargs = 0 })
 
 return {
 	"kristijanhusak/vim-dadbod-ui",
