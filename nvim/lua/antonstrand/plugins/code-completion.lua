@@ -62,6 +62,14 @@ return {
           ["<CR>"] = cmp.mapping.confirm({ select = false }),
         }),
 
+        -- Set up dadbod (SQL)
+        cmp.setup.filetype({ "sql" }, {
+          sources = {
+            { name = "vim-dadbod-completion" },
+            { name = "buffer" },
+          },
+        }),
+
         -- sources for autocompletion
         sources = cmp.config.sources({
           { name = "nvim_lsp" },
