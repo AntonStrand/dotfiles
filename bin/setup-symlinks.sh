@@ -18,5 +18,7 @@ ln -nfs ~/dotfiles/yabai ~/.config/yabai
 
 ln -nfs ~/dotfiles/skhd ~/.config/skhd
 
+ln -nfs ~/dotfiles/ghostty ~/.config/ghostty
+
 # initialize new settings
 source ~/.zshrc

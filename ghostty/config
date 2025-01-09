@@ -1,0 +1,12 @@
+# Reload config cmd shift ,
+
+
+theme = catppuccin-mocha
+font-size = 16
+
+# Remove ligature
+font-feature = "-calt"
+
+# Hide title bar
+macos-titlebar-proxy-icon = hidden
+title = " "
