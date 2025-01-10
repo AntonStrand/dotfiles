@@ -3,6 +3,7 @@ alt + shift - r : killall yabai&&yabai --start-service&&skhd --restart-service
 
 # open applications and websites
 ctrl + shift + alt - k : open -a kitty
+ctrl + shift + alt - t : open -a ghostty
 ctrl + shift + alt - s : open -a slack
 ctrl + shift + alt - m : open -a messenger
 ctrl + shift + alt - c : open /Applications/Google\ Chrome.app
