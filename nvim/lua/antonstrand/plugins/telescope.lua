@@ -79,5 +79,9 @@ return {
     vim.keymap.set("n", "<leader>fis", function()
       builtin.live_grep({ prompt_title = "Find in Insurello files", cwd = "~/work/insurello/" })
     end, { desc = "Find string in insurello" })
+
+    vim.keymap.set("n", "<leader>fd", function()
+      builtin.live_grep({ prompt_title = "Search Neovim tips and tricks", cwd = "~/notes/neovim/" })
+    end, { desc = "Search Neovim tips and tricks" })
   end,
 }
