@@ -5,6 +5,7 @@ vim.keymap.set("n", "<leader>sh", ":nohlsearch<CR>", { desc = "Hide search highl
 
 -- Re-map common typo
 vim.keymap.set("n", ":'", ":w", { desc = "Write file" })
+vim.keymap.set("n", ":*", ":w", { desc = "Write file" })
 
 -- Move and center
 vim.keymap.set("n", "<C-d>", "<C-d>zz")
