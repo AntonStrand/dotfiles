@@ -6,7 +6,7 @@ vim.opt.cursorline = true
 vim.opt.autoread = true
 
 -- Line numbers
-vim.opt.number = true
+vim.opt.number = true -- Show line number of the current line
 vim.opt.relativenumber = true
 
 -- Use spaces instead of tabs
