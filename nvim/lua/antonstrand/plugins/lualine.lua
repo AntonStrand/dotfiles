@@ -130,7 +130,7 @@ return {
 						"filetype",
 						{
 							-- Show the current lsp
-							icon = "",
+							icon = " ",
 							lsp_name,
 						},
 						"progress",
