@@ -12,11 +12,11 @@ vim.api.nvim_create_autocmd("FileType", {
 
 local function filenameFirst(_, path)
   local tail = vim.fs.basename(path)
-  local parent = vim.fn.fnamemodify(vim.fs.dirname(path), ":p:~")
   if parent == "." then
     return tail
   end
   return string.format("%s%s%s", tail, delimiter, parent)
+	local parent = vim.fn.fnamemodify(vim.fs.dirname(path), ":p:~:.")
 end
 
 return {
