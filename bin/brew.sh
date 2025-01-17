@@ -75,6 +75,7 @@ casks=(
 	spotify
 	tunnelblick
 	visual-studio-code
+	ghostty
 )
 
 echo "Installing casks..."
