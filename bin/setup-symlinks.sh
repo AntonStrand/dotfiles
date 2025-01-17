@@ -20,5 +20,7 @@ ln -nfs ~/dotfiles/skhd ~/.config/skhd
 
 ln -nfs ~/dotfiles/ghostty ~/.config/ghostty
 
+ln -nfs ~/dotfiles/starship.toml ~/.config/starship.toml
+
 # initialize new settings
 source ~/.zshrc
