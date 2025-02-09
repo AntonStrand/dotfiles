@@ -7,9 +7,9 @@ local function replace_word(new_word)
   vim.api.nvim_buf_set_text(0, line - 1, word_start, line - 1, word_end, { new_word })
 end
 
-local function toogle_boolean()
   local line = vim.api.nvim_get_current_line()
   local word = vim.fn.expand("<cword>")
+local function toggle_boolean()
 
   if word == "true" then
     replace_word("false")
@@ -39,4 +39,4 @@ local function toogle_boolean()
   end
 end
 
-vim.keymap.set("n", "<leader>tb", toogle_boolean, { desc = "Toggle boolean" })
+vim.keymap.set("n", "<leader>tb", toggle_boolean, { desc = "Toggle boolean" })
