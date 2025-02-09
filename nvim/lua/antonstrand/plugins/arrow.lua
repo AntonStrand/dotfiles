@@ -1,7 +1,8 @@
 return {
-	"otavioschwanck/arrow.nvim",
-	opts = {
-		show_icons = true,
-		leader_key = "ä",
-	},
+  "otavioschwanck/arrow.nvim",
+  opts = {
+    leader_key = "ä",
+    show_icons = true,
+    separate_by_branch = true,
+  },
 }
