@@ -37,3 +37,6 @@ vim.keymap.set("v", "K", ":m '<-2<CR>gv=gv")
 -- Move current line
 vim.keymap.set("n", "<leader>j", ":m+1<CR>")
 vim.keymap.set("n", "<leader>k", ":m-2<CR>")
+
+vim.keymap.set("n", "<leader>n%", ":edit %:h<tab>")
+vim.cmd([[ cnoremap <expr>%% getcmdtype() == ':' ? expand('%:h') : '%%' ]])
