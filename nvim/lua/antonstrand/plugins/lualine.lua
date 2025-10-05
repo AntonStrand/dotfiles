@@ -92,6 +92,7 @@ return {
 								return require("arrow.statusline").text_for_statusline_with_icons(bufnr)
 							end,
 						},
+						"trouble",
 					},
 					lualine_x = {
 						{
