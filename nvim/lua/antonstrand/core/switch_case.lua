@@ -90,11 +90,23 @@ vim.api.nvim_create_user_command("ToSnakeCase", snake_case, {})
 vim.api.nvim_create_user_command("ToSentenceCase", sentence_case, {})
 vim.api.nvim_create_user_command("ToKebabCase", kebab_case, {})
 
+local dot_repeat = require("antonstrand.core.utils").dot_repeat
 local modes = { "n", "v" }
-vim.keymap.set(modes, "<leader>tc", camel_case, { noremap = true, silent = true, desc = "Convert to camelCase" })
-vim.keymap.set(modes, "<leader>tp", pascal_case, { noremap = true, silent = true, desc = "Convert to PascalCase" })
-vim.keymap.set(modes, "<leader>ts", snake_case, { noremap = true, silent = true, desc = "Convert to snake_case" })
-vim.keymap.set(modes, "<leader>tm", sentence_case, { noremap = true, silent = true, desc = "Convert to sentence" })
-vim.keymap.set(modes, "<leader>tk", kebab_case, { noremap = true, silent = true, desc = "Convert to kebab-case" })
+local opts = { noremap = true, silent = true, expr = true }
+
+opts.desc = "Convert to camelCase"
+vim.keymap.set(modes, "<leader>tc", dot_repeat(camel_case), opts)
+
+opts.desc = "Convert to PascalCase"
+vim.keymap.set(modes, "<leader>tp", dot_repeat(pascal_case), opts)
+
+opts.desc = "Convert to snake_case"
+vim.keymap.set(modes, "<leader>ts", dot_repeat(snake_case), opts)
+
+opts.desc = "Convert to sentence"
+vim.keymap.set(modes, "<leader>tm", dot_repeat(sentence_case), opts)
+
+opts.desc = "Convert to kebab-case"
+vim.keymap.set(modes, "<leader>tk", dot_repeat(kebab_case), opts)
 
 return M
