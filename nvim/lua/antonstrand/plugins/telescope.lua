@@ -23,6 +23,7 @@ return {
   "nvim-telescope/telescope.nvim",
   branch = "0.1.x",
   dependencies = {
+    "nvim-telescope/telescope-live-grep-args.nvim",
     "nvim-lua/plenary.nvim",
     { "nvim-telescope/telescope-fzf-native.nvim", build = "make" },
     "nvim-tree/nvim-web-devicons",
@@ -30,6 +31,7 @@ return {
   config = function()
     local telescope = require("telescope")
     local actions = require("telescope.actions")
+    local lga_actions = require("telescope-live-grep-args.actions")
 
     telescope.setup({
       defaults = {
@@ -48,12 +50,38 @@ return {
           },
         },
       },
+      extensions = {
+        live_grep_args = {
+          auto_quoting = true, -- enable/disable auto-quoting
+          mappings = {    -- extend mappings
+            i = {
+              ["<C-k>"] = lga_actions.quote_prompt(),
+              ["<C-i>"] = lga_actions.quote_prompt({ postfix = " --iglob " }),
+              ["<C-f>"] = lga_actions.quote_prompt({ postfix = " -g " }),
+              ["<C-t>"] = lga_actions.quote_prompt({ postfix = " -t " }),
+              -- freeze the current list and start a fuzzy search in the frozen list
+              ["<C-space>"] = actions.to_fuzzy_refine,
+            },
+          },
+          -- ... also accepts theme settings, for example:
+          -- theme = "dropdown", -- use dropdown theme
+          -- theme = { }, -- use own theme spec
+          -- layout_config = { mirror=true }, -- mirror preview pane
+        },
+      },
     })
 
     telescope.load_extension("fzf")
+    telescope.load_extension("live_grep_args")
 
     -- set keymaps
     vim.keymap.set("n", "<leader>ff", "<cmd>Telescope find_files<cr>", { desc = "Fuzzy find files in cwd" })
+    vim.keymap.set(
+      "n",
+      "<leader>fg",
+      ":lua require('telescope').extensions.live_grep_args.live_grep_args()<CR>",
+      { desc = "Find using ripgrep" }
+    )
     vim.keymap.set("n", "<leader>fr", "<cmd>Telescope resume<cr>", { desc = "Resume fuzzy find" })
     vim.keymap.set("n", "<leader>fs", "<cmd>Telescope live_grep<cr>", { desc = "Find string in cwd" })
     vim.keymap.set(
