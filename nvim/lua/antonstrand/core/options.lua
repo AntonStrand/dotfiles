@@ -46,5 +46,8 @@ vim.opt.spelllang = "sv,en_us"
 -- Preview commands in a separate window
 vim.opt.inccommand = "split"
 
+-- Use ripgrep for grep
+vim.cmd([[set grepprg=rg\ --vimgrep\ --smart-case\ --follow]])
+
 -- Enable copy/paste to clipboard
 -- vim.cmd([[ set clipboard+=unnamedplus ]])
