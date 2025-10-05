@@ -12,11 +12,11 @@ end
 vim.opt.rtp:prepend(lazypath)
 
 require("lazy").setup({
-  { import = "antonstrand.plugins"},
-  { import = "antonstrand.plugins.lsp" }
+  { import = "antonstrand.plugins" },
+  { import = "antonstrand.plugins.lsp" },
 }, {
   install = {
-    colorscheme = { "catppuccin" },  -- Use colorscheme for new plugins
+    colorscheme = { "catppuccin" }, -- Use colorscheme for new plugins
   },
   -- Do not use luarocks
   rocks = { enabled = false },
@@ -28,5 +28,5 @@ require("lazy").setup({
   -- Don't notify when config files has been changed
   change_detection = {
     notify = false,
-  }
+  },
 })
