@@ -25,10 +25,13 @@ source $ZSH/oh-my-zsh.sh
 
 # Add .NET Core SDK tools
 export PATH="$PATH:/Users/antonstrand/.dotnet/tools"
+
 # Set Neovim as the default editor
 export EDITOR="nvim"
 
-alias v="nvim"
+# Open manpages in Neovim
+export MANPAGER='nvim +Man!'
+export MANWIDTH=999
 
 # Edit dotfiles
 # Move to dotfiles directory and open nvim and move back when done.
@@ -43,6 +46,8 @@ function vd () {
 }
 
 # Vim .
+alias v="nvim"
+
 alias v.="nvim ."
 
 alias tn="tmux new -s $(basename $PWD)"
