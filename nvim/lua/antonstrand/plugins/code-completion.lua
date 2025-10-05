@@ -83,7 +83,7 @@ return {
 				formatting = {
 					format = lspkind.cmp_format({
 						mode = "symbol",
-						maxwidth = 50,
+						maxwidth = 80,
 						ellipsis_char = "...",
 						symbol_map = { Copilot = "" },
 					}),
@@ -93,16 +93,15 @@ return {
 				sorting = {
 					priority_weight = 2, -- default priority
 					comparators = {
-						require("copilot_cmp.comparators").pritoritize,
-						-- Default nvim-cmp order.
-						cmp.config.compare.offset,
 						cmp.config.compare.exact,
+						cmp.config.compare.offset,
 						cmp.config.compare.recently_used,
 						cmp.config.compare.locality,
 						cmp.config.compare.kind,
 						cmp.config.compare.sort_text,
 						cmp.config.compare.length,
 						cmp.config.compare.order,
+						require("copilot_cmp.comparators").pritoritize,
 					},
 				},
 			})
