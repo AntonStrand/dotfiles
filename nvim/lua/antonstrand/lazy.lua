@@ -18,6 +18,8 @@ require("lazy").setup({
   install = {
     colorscheme = { "catppuccin" },  -- Use colorscheme for new plugins
   },
+  -- Do not use luarocks
+  rocks = { enabled = false },
   -- Check for updates but don't notify
   checker = {
     enabled = true,
