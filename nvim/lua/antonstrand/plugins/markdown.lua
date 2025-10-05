@@ -1,5 +1,11 @@
 return {
-  "tadmccorkle/markdown.nvim",
-  ft = "markdown",
-  opts = {},
+	{
+		"OXY2DEV/markview.nvim",
+		lazy = true,
+	},
+	{
+		"tadmccorkle/markdown.nvim",
+		ft = "markdown",
+		opts = {},
+	},
 }
