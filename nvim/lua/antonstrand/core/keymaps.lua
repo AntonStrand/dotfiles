@@ -24,10 +24,10 @@ vim.keymap.set("n", "#", "#zz")
 
 -- Generate uuid
 vim.keymap.set(
-	"n",
-	"<leader>ug",
-	":let @u = system(\"uuidgen | tr '[:upper:]' '[:lower:]' | tr -d '\\n'\")<CR>",
-	{ desc = "Generate UUID" }
+  "n",
+  "<leader>ug",
+  ":let @u = system(\"uuidgen | tr '[:upper:]' '[:lower:]' | tr -d '\\n'\")<CR>",
+  { desc = "Generate UUID" }
 )
 
 -- Move selected lines with shift+j or shift+k
@@ -38,5 +38,8 @@ vim.keymap.set("v", "K", ":m '<-2<CR>gv=gv")
 vim.keymap.set("n", "<leader>j", ":m+1<CR>")
 vim.keymap.set("n", "<leader>k", ":m-2<CR>")
 
-vim.keymap.set("n", "<leader>n%", ":edit %:h<tab>")
+vim.keymap.set("n", "<leader>n%", ":edit %:h<tab>", { desc = "Navigate to file directory" })
 vim.cmd([[ cnoremap <expr>%% getcmdtype() == ':' ? expand('%:h') : '%%' ]])
+
+-- vim.keymap.set("n", "]x", require("trouble").next, { silent = true, noremap = true })
+-- vim.keymap.set("n", "[x", require("trouble").prev, { silent = true, noremap = true })
