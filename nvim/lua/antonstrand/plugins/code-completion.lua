@@ -1,22 +1,22 @@
 return {
 	-- Copilot dependecies
-	{
-		"zbirenbaum/copilot.lua",
-		config = function()
-			require("copilot").setup({
-				-- Disable since they will interfere with the completion menu
-				suggestion = { enabled = false },
-				panel = { enabled = false },
-			})
-		end,
-	},
-	{
-		-- Add Copilot to the list of completion sources
-		"zbirenbaum/copilot-cmp",
-		config = function()
-			require("copilot_cmp").setup()
-		end,
-	},
+	-- {
+	-- 	"zbirenbaum/copilot.lua",
+	-- 	config = function()
+	-- 		require("copilot").setup({
+	-- 			-- Disable since they will interfere with the completion menu
+	-- 			suggestion = { enabled = false },
+	-- 			panel = { enabled = false },
+	-- 		})
+	-- 	end,
+	-- },
+	-- {
+	-- 	-- Add Copilot to the list of completion sources
+	-- 	"zbirenbaum/copilot-cmp",
+	-- 	config = function()
+	-- 		require("copilot_cmp").setup()
+	-- 	end,
+	-- },
 	-- Set up nvim-cmp
 	{
 		"hrsh7th/nvim-cmp",
@@ -75,7 +75,7 @@ return {
 					{ name = "nvim_lsp" },
 					{ name = "buffer" }, -- text within current buffer
 					{ name = "luasnip" }, -- snippets
-					{ name = "copilot" },
+					-- { name = "copilot" },
 					{ name = "path" }, -- file system paths
 				}),
 
@@ -101,7 +101,7 @@ return {
 						cmp.config.compare.sort_text,
 						cmp.config.compare.length,
 						cmp.config.compare.order,
-						require("copilot_cmp.comparators").pritoritize,
+						-- require("copilot_cmp.comparators").pritoritize,
 					},
 				},
 			})
