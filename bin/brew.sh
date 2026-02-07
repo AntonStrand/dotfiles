@@ -62,19 +62,13 @@ done
 brew tap homebrew/cask-fonts
 
 casks=(
-	1password
 	bankid
 	docker
 	dotnet-sdk
 	font-hack-nerd-font
 	google-chrome
-	kitty
-	microsoft-teams
-	postico
 	slack
 	spotify
-	tunnelblick
-	visual-studio-code
 	ghostty
 )
 
