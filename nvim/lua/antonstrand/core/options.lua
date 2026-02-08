@@ -51,3 +51,19 @@ vim.cmd([[set grepprg=rg\ --vimgrep\ --smart-case\ --follow]])
 
 -- Enable copy/paste to clipboard
 -- vim.cmd([[ set clipboard+=unnamedplus ]])
+
+-- Enable rounded borders around floating windows
+-- and handle wilder (cmd completion)
+vim.o.winborder = "rounded"
+local initialWinborder = vim.o.winborder
+
+vim.api.nvim_create_autocmd("CmdlineEnter", {
+  callback = function()
+    vim.o.winborder = "none"
+  end,
+})
+vim.api.nvim_create_autocmd("CmdlineLeave", {
+  callback = function()
+    vim.o.winborder = initialWinborder
+  end,
+})
