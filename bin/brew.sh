@@ -63,8 +63,6 @@ casks=(
 	bankid
 	docker
 	dotnet-sdk
-	google-chrome
-	slack
 	spotify
 	ghostty
 )
