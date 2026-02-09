@@ -50,6 +50,7 @@ apps=(
 	yabai
 	zoxide
 	lua-language-server
+	font-hack-nerd-font
 )
 
 installed_apps=$(brew list)
@@ -58,14 +59,10 @@ for app in ${apps[@]}; do
 	(echo "${installed_apps[@]}" | fgrep -q "$app") && echo "$app is already installed" || brew install "${app}"
 done
 
-# Make it possible to install fonts
-brew tap homebrew/cask-fonts
-
 casks=(
 	bankid
 	docker
 	dotnet-sdk
-	font-hack-nerd-font
 	google-chrome
 	slack
 	spotify
