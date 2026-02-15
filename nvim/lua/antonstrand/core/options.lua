@@ -25,6 +25,9 @@ vim.opt.completeopt = { "menuone", "noselect" }
 -- Enable persistent undo history
 vim.opt.undofile = true
 
+-- Don't create swap files
+vim.opt.swapfile = false
+
 -- Enable 24-bit color
 vim.opt.termguicolors = true
 
