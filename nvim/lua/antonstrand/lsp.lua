@@ -2,12 +2,6 @@ vim.lsp.enable("lua_ls")
 vim.lsp.enable("ts_ls")
 vim.lsp.enable("elmls")
 vim.lsp.enable("html")
-vim.lsp.enable("ionide")
--- 	"ionide/ionide-vim",
--- 	ft = "fsharp",
--- 	dependencies = { "neovim/nvim-lspconfig" },
--- })
--- vim.lsp.enable("ionide")
 
 local keymap = vim.keymap -- for conciseness
 vim.api.nvim_create_autocmd("LspAttach", {
