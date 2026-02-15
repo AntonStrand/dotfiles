@@ -100,7 +100,10 @@ return {
     vim.keymap.set("n", "<leader>fq", "<cmd>Telescope registers<cr>", { desc = "Open registers" })
 
     vim.keymap.set("n", "<leader>fd", function()
-      builtin.live_grep({ prompt_title = "Search Neovim tips and tricks", cwd = "~/notes/neovim/" })
+      require("telescope.builtin").live_grep({
+        prompt_title = "Search Neovim tips and tricks",
+        cwd = "~/notes/neovim/",
+      })
     end, { desc = "Search Neovim tips and tricks" })
   end,
 }
