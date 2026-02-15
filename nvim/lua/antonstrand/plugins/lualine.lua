@@ -1,19 +1,19 @@
 -- LSP STATUS
 
 local function lsp_name()
-	local name = "No Active Lsp"
-	local buf_ft = vim.api.nvim_buf_get_option(0, "filetype")
-	local clients = vim.lsp.get_clients()
-	if next(clients) == nil then
-		return name
-	end
-	for _, client in ipairs(clients) do
-		local filetypes = client.config.filetypes
-		if filetypes and vim.fn.index(filetypes, buf_ft) ~= -1 then
-			return client.name
-		end
-	end
-	return name
+  local name = "No Active Lsp"
+  local buf_ft = vim.api.nvim_get_option_value("filetype", { buf = 0 })
+  local clients = vim.lsp.get_clients()
+  if next(clients) == nil then
+    return name
+  end
+  for _, client in ipairs(clients) do
+    local filetypes = client.config.filetypes
+    if filetypes and vim.fn.index(filetypes, buf_ft) ~= -1 then
+      name = client.name
+    end
+  end
+  return name
 end
 
 local function path()
