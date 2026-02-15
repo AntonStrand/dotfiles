@@ -1,1 +1,17 @@
+-- ================================================================================================
+-- TITLE : Vim exchange
+-- ABOUT : Swap two selections.
+-- USAGE :
+--  > Select :`cx` motion
+--  > Cancel : `cxc`
+-- Either select the other object or use dot (`.`) to repeat the selection.
+--
+-- E.g. one two
+--       ^- cursor
+-- 1. cxiw
+-- 2. w
+-- 3. .
+--
+-- will result in two one
+-- ================================================================================================
 return { "tommcdo/vim-exchange" }
