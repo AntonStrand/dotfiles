@@ -5,8 +5,13 @@ local function jump_to(direction)
   end
 end
 
-vim.keymap.set("n", "]x", jump_to("next"), { silent = true, noremap = true })
-vim.keymap.set("n", "[x", jump_to("prev"), { silent = true, noremap = true })
+local opts = { silent = true, noremap = true }
+
+opts.desc = "jump to next trouble"
+vim.keymap.set("n", "]x", jump_to("next"), opts)
+
+opts.desc = "jump to previous trouble"
+vim.keymap.set("n", "[x", jump_to("prev"), opts)
 
 return {
   "folke/trouble.nvim",
@@ -23,31 +28,6 @@ return {
       "<leader>xe",
       "<cmd>Trouble diagnostics toggle filter.severity=vim.diagnostic.severity.ERROR<cr>",
       desc = "Diagnostics erros (Trouble)",
-    },
-    {
-      "<leader>xX",
-      "<cmd>Trouble diagnostics toggle filter.buf=0<cr>",
-      desc = "Buffer Diagnostics (Trouble)",
-    },
-    {
-      "<leader>cs",
-      "<cmd>Trouble symbols toggle focus=false<cr>",
-      desc = "Symbols (Trouble)",
-    },
-    {
-      "<leader>cl",
-      "<cmd>Trouble lsp toggle focus=false win.position=right<cr>",
-      desc = "LSP Definitions / references / ... (Trouble)",
-    },
-    {
-      "<leader>xL",
-      "<cmd>Trouble loclist toggle<cr>",
-      desc = "Location List (Trouble)",
-    },
-    {
-      "<leader>xQ",
-      "<cmd>Trouble qflist toggle<cr>",
-      desc = "Quickfix List (Trouble)",
     },
   },
 }
