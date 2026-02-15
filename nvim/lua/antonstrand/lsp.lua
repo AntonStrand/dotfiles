@@ -60,7 +60,6 @@ vim.api.nvim_create_autocmd("LspAttach", {
 vim.lsp.inlay_hint.enable(true)
 
 local severity = vim.diagnostic.severity
-
 vim.diagnostic.config({
 	signs = {
 		text = {
@@ -69,5 +68,20 @@ vim.diagnostic.config({
 			[severity.HINT] = "󰌶 ",
 			[severity.INFO] = "󰋽 ",
 		},
+	},
+	virtual_text = {
+		spacing = 2,
+		format = function(diagnostic)
+			-- Don't show any message for info or hint
+			if diagnostic.severity == severity.INFO or diagnostic.severity == severity.HINT then
+				return ""
+			end
+
+			-- Only show a short message for warnings and errors
+			local first_line = diagnostic.message:gmatch("[^\n]*")()
+			local first_sentence = string.match(first_line, "(.-%. )") or first_line
+			local first_lhs = string.match(first_sentence, "(.-): ") or first_sentence
+			return first_lhs
+		end,
 	},
 })
