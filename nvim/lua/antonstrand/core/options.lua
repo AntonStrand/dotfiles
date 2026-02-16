@@ -1,53 +1,55 @@
-vim.opt.backspace = "2"
-vim.opt.showcmd = true
-vim.opt.laststatus = 2
-vim.opt.autowrite = true
-vim.opt.cursorline = true
-vim.opt.autoread = true
+local o = vim.opt
+
+o.backspace = "2"
+o.showcmd = true
+o.laststatus = 2
+o.autowrite = true
+o.cursorline = true
+o.autoread = true
 
 -- Line numbers
-vim.opt.number = true -- Show line number of the current line
-vim.opt.relativenumber = true
+o.number = true -- Show line number of the current line
+o.relativenumber = true
 
 -- Use spaces instead of tabs
-vim.opt.tabstop = 2
-vim.opt.shiftwidth = 2
-vim.opt.shiftround = true
-vim.opt.expandtab = true
+o.tabstop = 2
+o.shiftwidth = 2
+o.shiftround = true
+o.expandtab = true
 
 -- Enable ignorecase + smartcase for better searching
-vim.opt.ignorecase = true
-vim.opt.smartcase = true
+o.ignorecase = true
+o.smartcase = true
 
 -- Set completeopt to have a better completion experience
-vim.opt.completeopt = { "menuone", "noselect" }
+o.completeopt = { "menuone", "noselect" }
 
 -- Enable persistent undo history
-vim.opt.undofile = true
+o.undofile = true
 
 -- Don't create swap files
-vim.opt.swapfile = false
+o.swapfile = false
 
 -- Enable 24-bit color
-vim.opt.termguicolors = true
+o.termguicolors = true
 
 -- Enable the sign column to prevent the screen from jumping
-vim.opt.signcolumn = "yes"
+o.signcolumn = "yes"
 
 -- Always keep 8 lines above/below cursor unless at start/end of file
-vim.opt.scrolloff = 8
+o.scrolloff = 8
 
 -- Always keep cursor 8 characters from horizontal edge unless at start/end of file
-vim.opt.sidescrolloff = 8
+o.sidescrolloff = 8
 
 -- O and o, don't continue comments
 vim.cmd([[autocmd FileType * set formatoptions-=o]])
 
 -- Set spell languanges but spell is opt in.
-vim.opt.spelllang = "sv,en_us"
+o.spelllang = "sv,en_us"
 
 -- Preview commands in a separate window
-vim.opt.inccommand = "split"
+o.inccommand = "split"
 
 -- Use ripgrep for grep
 vim.cmd([[set grepprg=rg\ --vimgrep\ --smart-case\ --follow]])
@@ -55,15 +57,15 @@ vim.cmd([[set grepprg=rg\ --vimgrep\ --smart-case\ --follow]])
 -- Rounded bordes collides with Wilder styling while suggesting commands
 -- This is a workaround by removing the boarded when using the command
 local boarder = "rounded"
-vim.opt.winborder = boarder
+o.winborder = boarder
 
 vim.api.nvim_create_autocmd("CmdlineEnter", {
   callback = function()
-    vim.opt.winborder = "none"
+    o.winborder = "none"
   end,
 })
 vim.api.nvim_create_autocmd("CmdlineLeave", {
   callback = function()
-    vim.opt.winborder = boarder
+    o.winborder = boarder
   end,
 })
