@@ -69,3 +69,18 @@ vim.api.nvim_create_autocmd("CmdlineLeave", {
     o.winborder = boarder
   end,
 })
+
+-- Tell nvim how to handle modern filetypes
+vim.filetype.add({
+  extension = {
+    env = "dotenv",
+  },
+  filename = {
+    [".env"] = "dotenv",
+    ["env"] = "dotenv",
+  },
+  pattern = {
+    ["[jt]sconfig.*.json"] = "jsonc",
+    ["%.env%.[%w_.-]+"] = "dotenv",
+  },
+})
