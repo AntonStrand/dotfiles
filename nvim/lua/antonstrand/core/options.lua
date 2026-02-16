@@ -1,5 +1,11 @@
 local o = vim.opt
 
+-- Performance settings
+o.synmaxcol = 300  -- Syntax highlighting limit
+o.updatetime = 300 -- Faster completion
+o.redrawtime = 10000
+o.maxmempattern = 20000
+
 o.backspace = "2"
 o.showcmd = true
 o.laststatus = 2
