@@ -1,3 +1,3 @@
-require("antonstrand.core")
-require("antonstrand.lazy")
-require("antonstrand.lsp")
+require("config")
+require("config.lazy")
+require("config.lsp")

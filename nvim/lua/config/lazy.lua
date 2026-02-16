@@ -12,8 +12,8 @@ end
 vim.opt.rtp:prepend(lazypath)
 
 require("lazy").setup({
-  { import = "antonstrand.plugins" },
-  { import = "antonstrand.plugins.lsp" },
+  { import = "config.plugins" },
+  { import = "config.plugins.lsp" },
 }, {
   install = {
     colorscheme = { "catppuccin" }, -- Use colorscheme for new plugins

@@ -90,7 +90,7 @@ vim.api.nvim_create_user_command("ToSnakeCase", snake_case, {})
 vim.api.nvim_create_user_command("ToSentenceCase", sentence_case, {})
 vim.api.nvim_create_user_command("ToKebabCase", kebab_case, {})
 
-local dot_repeat = require("antonstrand.core.utils").dot_repeat
+local dot_repeat = require("config.core.utils").dot_repeat
 local modes = { "n", "v" }
 local opts = { noremap = true, silent = true, expr = true }
 

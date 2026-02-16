@@ -1,4 +1,4 @@
-local utils = require("antonstrand.core.prefill.helpers")
+local utils = require("config.core.prefill.helpers")
 
 local M = {}
 

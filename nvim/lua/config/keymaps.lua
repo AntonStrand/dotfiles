@@ -6,6 +6,7 @@ vim.keymap.set("n", "<leader>sh", ":nohlsearch<CR>", { desc = "Hide search highl
 -- Re-map common typo
 vim.keymap.set("n", ":'", ":w", { desc = "Write file" })
 vim.keymap.set("n", ":*", ":w", { desc = "Write file" })
+vim.keymap.set("n", ':w"', ":wq", { desc = "Write and close all files" })
 
 -- Move and center
 vim.keymap.set("n", "<C-d>", "<C-d>zz")
@@ -40,6 +41,3 @@ vim.keymap.set("n", "<leader>k", ":m-2<CR>")
 
 vim.keymap.set("n", "<leader>n%", ":edit %:h<tab>", { desc = "Navigate to file directory" })
 vim.cmd([[ cnoremap <expr>%% getcmdtype() == ':' ? expand('%:h') : '%%' ]])
-
--- vim.keymap.set("n", "]x", require("trouble").next, { silent = true, noremap = true })
--- vim.keymap.set("n", "[x", require("trouble").prev, { silent = true, noremap = true })

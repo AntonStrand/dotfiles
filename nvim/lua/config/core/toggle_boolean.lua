@@ -1,5 +1,5 @@
 -- Description: Toggle boolean values in the current line or at the cursor.
-local dot_repeat = require("antonstrand.core.utils").dot_repeat
+local dot_repeat = require("config.core.utils").dot_repeat
 
 local function replace_word(new_word)
   local line, col = unpack(vim.api.nvim_win_get_cursor(0))

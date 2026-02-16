@@ -1,4 +1,4 @@
-local to_pascal_case = require("antonstrand.core.switch_case").to_pascal_case
+local to_pascal_case = require("config.core.switch_case").to_pascal_case
 
 local M = {}
 

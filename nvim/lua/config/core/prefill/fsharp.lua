@@ -1,4 +1,4 @@
-local utils = require("antonstrand.core.prefill.helpers")
+local utils = require("config.core.prefill.helpers")
 
 local function is_domain_sweden()
 	local cur_path = vim.fn.expand("%:h")
