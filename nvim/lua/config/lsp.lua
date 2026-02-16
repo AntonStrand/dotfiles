@@ -91,21 +91,21 @@ vim.api.nvim_create_autocmd("LspAttach", {
     opts.desc = "Smart rename"
     keymap.set("n", "<leader>rn", vim.lsp.buf.rename, opts)
 
-    opts.desc = "Show buffer diagnostics"
-    keymap.set("n", "<leader>D", "<cmd>Telescope diagnostics bufnr=0<CR>", opts)
+    -- opts.desc = "Show buffer diagnostics"
+    -- keymap.set("n", "<leader>D", "<cmd>Telescope diagnostics bufnr=0<CR>", opts)
 
-    opts.desc = "Show line diagnostics"
-    keymap.set("n", "<leader>d", vim.diagnostic.open_float, opts)
+    -- opts.desc = "Show line diagnostics"
+    -- keymap.set("n", "<leader>d", vim.diagnostic.open_float, opts)
 
-    opts.desc = "Go to previous diagnostic"
-    keymap.set("n", "[d", function()
-      vim.diagnostic.jump({ count = -1, float = true })
-    end, opts)
+    -- opts.desc = "Go to previous diagnostic"
+    -- keymap.set("n", "[d", function()
+    -- vim.diagnostic.jump({ count = -1, float = true })
+    -- end, opts)
     --
-    opts.desc = "Go to next diagnostic"
-    keymap.set("n", "]d", function()
-      vim.diagnostic.jump({ count = 1, float = true })
-    end, opts)
+    -- opts.desc = "Go to next diagnostic"
+    -- keymap.set("n", "]d", function()
+    -- vim.diagnostic.jump({ count = 1, float = true })
+    -- end, opts)
 
     opts.desc = "Show documentation for what is under cursor"
     keymap.set("n", "K", vim.lsp.buf.hover, opts)
@@ -115,29 +115,29 @@ vim.api.nvim_create_autocmd("LspAttach", {
   end,
 })
 
-local severity = vim.diagnostic.severity
-vim.diagnostic.config({
-  signs = {
-    text = {
-      [severity.ERROR] = "󰅚 ",
-      [severity.WARN] = "󰀪 ",
-      [severity.HINT] = "󰌶 ",
-      [severity.INFO] = "󰋽 ",
-    },
-  },
-  virtual_text = {
-    spacing = 2,
-    format = function(diagnostic)
-      -- Don't show any message for info or hint
-      if diagnostic.severity == severity.INFO or diagnostic.severity == severity.HINT then
-        return ""
-      end
+-- local severity = vim.diagnostic.severity
+-- vim.diagnostic.config({
+-- signs = {
+--   text = {
+--     [severity.ERROR] = "󰅚 ",
+--     [severity.WARN] = "󰀪 ",
+--     [severity.HINT] = "󰌶 ",
+--     [severity.INFO] = "󰋽 ",
+--   },
+-- },
+-- virtual_text = {
+-- spacing = 2,
+-- format = function(diagnostic)
+-- Don't show any message for info or hint
+-- if diagnostic.severity == severity.INFO or diagnostic.severity == severity.HINT then
+--   return ""
+-- end
 
-      -- Only show a short message for warnings and errors
-      local first_line = diagnostic.message:gmatch("[^\n]*")()
-      local first_sentence = string.match(first_line, "(.-%. )") or first_line
-      local first_lhs = string.match(first_sentence, "(.-): ") or first_sentence
-      return first_lhs
-    end,
-  },
-})
+-- Only show a short message for warnings and errors
+-- local first_line = diagnostic.message:gmatch("[^\n]*")()
+-- local first_sentence = string.match(first_line, "(.-%. )") or first_line
+-- local first_lhs = string.match(first_sentence, "(.-): ") or first_sentence
+-- return first_lhs
+--     end,
+--   },
+-- })
