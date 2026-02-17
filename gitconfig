@@ -8,7 +8,7 @@
 [includeIf "gitdir/i:~/work/"]
     [user]
         name = Anton Strand
-        email = anton.strand@savr.se
+        email = anton.strand@savr.com
 
 [core]
     editor = nvim
