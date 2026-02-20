@@ -5,7 +5,7 @@ alt + shift - r : killall yabai&&yabai --start-service&&skhd --restart-service
 ctrl + shift + alt - n : open -a notion
 ctrl + shift + alt - t : open -a ghostty
 ctrl + shift + alt - s : open -a slack
-ctrl + shift + alt - m : open -a messenger
+ctrl + shift + alt - m : open -a messages
 ctrl + shift + alt - c : open /Applications/Google\ Chrome.app
 ctrl + shift + alt - p : open -a postico\ 2
 ctrl + shift + alt - y : open https://www.youtube.com
