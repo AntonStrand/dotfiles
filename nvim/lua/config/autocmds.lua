@@ -29,3 +29,14 @@ vim.api.nvim_create_autocmd("BufReadPost", {
 		end
 	end,
 })
+
+-- Resize splits if window got resized
+vim.api.nvim_create_autocmd({ "VimResized" }, {
+	desc = "Resize splits if window got resized",
+	group = augroup("resize_splits"),
+	callback = function()
+		local current_tab = vim.fn.tabpagenr()
+		vim.cmd("tabdo wincmd =")
+		vim.cmd("tabnext " .. current_tab)
+	end,
+})
