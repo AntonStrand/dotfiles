@@ -94,50 +94,7 @@ vim.api.nvim_create_autocmd("LspAttach", {
 		opts.desc = "Show documentation for what is under cursor"
 		keymap.set("n", "K", vim.lsp.buf.hover, opts)
 
-    -- opts.desc = "Show line diagnostics"
-    -- keymap.set("n", "<leader>d", vim.diagnostic.open_float, opts)
-
-    -- opts.desc = "Go to previous diagnostic"
-    -- keymap.set("n", "[d", function()
-    -- vim.diagnostic.jump({ count = -1, float = true })
-    -- end, opts)
-    --
-    -- opts.desc = "Go to next diagnostic"
-    -- keymap.set("n", "]d", function()
-    -- vim.diagnostic.jump({ count = 1, float = true })
-    -- end, opts)
-
-    opts.desc = "Show documentation for what is under cursor"
-    keymap.set("n", "K", vim.lsp.buf.hover, opts)
-
-    opts.desc = "Restart LSP"
-    keymap.set("n", "<leader>rs", ":LspRestart<CR>", opts)
-  end,
+		opts.desc = "Restart LSP"
+		keymap.set("n", "<leader>rs", ":LspRestart<CR>", opts)
+	end,
 })
-
--- local severity = vim.diagnostic.severity
--- vim.diagnostic.config({
--- signs = {
---   text = {
---     [severity.ERROR] = "󰅚 ",
---     [severity.WARN] = "󰀪 ",
---     [severity.HINT] = "󰌶 ",
---     [severity.INFO] = "󰋽 ",
---   },
--- },
--- virtual_text = {
--- spacing = 2,
--- format = function(diagnostic)
--- Don't show any message for info or hint
--- if diagnostic.severity == severity.INFO or diagnostic.severity == severity.HINT then
---   return ""
--- end
-
--- Only show a short message for warnings and errors
--- local first_line = diagnostic.message:gmatch("[^\n]*")()
--- local first_sentence = string.match(first_line, "(.-%. )") or first_line
--- local first_lhs = string.match(first_sentence, "(.-): ") or first_sentence
--- return first_lhs
---     end,
---   },
--- })
