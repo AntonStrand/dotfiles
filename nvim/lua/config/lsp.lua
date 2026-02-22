@@ -11,11 +11,11 @@ vim.lsp.enable(servers)
 
 local keymap = vim.keymap -- for conciseness
 vim.api.nvim_create_autocmd("LspAttach", {
-	group = vim.api.nvim_create_augroup("UserLspConfig", {}),
-	callback = function(ev)
+	group = vim.api.nvim_create_augroup("user_lsp_attach", {}),
+	callback = function(args)
 		-- Buffer local mappings.
 		-- See `:help vim.lsp.*` for documentation on any of the below functions
-		local opts = { buffer = ev.buf, silent = true }
+		local opts = { buffer = args.buf, silent = true }
 
 		-- set keybinds
 		opts.desc = "Show LSP references"
