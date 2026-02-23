@@ -35,6 +35,16 @@ local diagnostic_goto = function(next, severity_)
   end
 end
 
+vim.api.nvim_create_user_command(
+  "DiagnosticsToLocList",
+  vim.diagnostic.setloclist,
+  { desc = "Add all diagnostic to location list" }
+)
+
+vim.api.nvim_create_user_command("ErrorsToLocList", function()
+  vim.diagnostic.setloclist({ severity = severity.ERROR })
+end, { desc = "Add all diagnostic errors to location list" })
+
 vim.keymap.set("n", "<leader>d", vim.diagnostic.open_float, { desc = "Line Diagnostics" })
 vim.keymap.set("n", "<leader>D", "<cmd>Telescope diagnostics bufnr=0<CR>", { desc = "Show buffer diagnostics" })
 vim.keymap.set("n", "]d", diagnostic_goto(true), { desc = "Next Diagnostic" })
