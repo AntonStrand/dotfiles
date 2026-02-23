@@ -61,9 +61,9 @@ o.inccommand = "split"
 vim.cmd([[set grepprg=rg\ --vimgrep\ --smart-case\ --follow]])
 
 -- Rounded bordes collides with Wilder styling while suggesting commands
--- This is a workaround by removing the boarded when using the command
-local boarder = "rounded"
-o.winborder = boarder
+-- This is a workaround by removing the border when using the command
+local border = "rounded"
+o.winborder = border
 
 vim.api.nvim_create_autocmd("CmdlineEnter", {
   callback = function()
@@ -72,7 +72,7 @@ vim.api.nvim_create_autocmd("CmdlineEnter", {
 })
 vim.api.nvim_create_autocmd("CmdlineLeave", {
   callback = function()
-    o.winborder = boarder
+    o.winborder = border
   end,
 })
 
