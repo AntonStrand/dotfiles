@@ -1,6 +1,7 @@
 require("config.options")
 require("config.keymaps")
 require("config.autocmds")
+require("config.diagnostics")
 require("config.core.utils")
 require("config.core.fsharp")
 require("config.core.switch_case")
