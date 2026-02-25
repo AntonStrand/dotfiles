@@ -35,16 +35,6 @@ local diagnostic_goto = function(next, severity_)
   end
 end
 
-vim.api.nvim_create_user_command(
-  "DiagnosticsToLocList",
-  vim.diagnostic.setloclist,
-  { desc = "Add all diagnostic to location list" }
-)
-
-vim.api.nvim_create_user_command("ErrorsToLocList", function()
-  vim.diagnostic.setloclist({ severity = severity.ERROR })
-end, { desc = "Add all diagnostic errors to location list" })
-
 vim.keymap.set("n", "<leader>d", vim.diagnostic.open_float, { desc = "Line Diagnostics" })
 vim.keymap.set("n", "<leader>D", "<cmd>Telescope diagnostics bufnr=0<CR>", { desc = "Show buffer diagnostics" })
 vim.keymap.set("n", "]d", diagnostic_goto(true), { desc = "Next Diagnostic" })
@@ -53,3 +43,33 @@ vim.keymap.set("n", "]e", diagnostic_goto(true, severity.ERROR), { desc = "Next 
 vim.keymap.set("n", "[e", diagnostic_goto(false, severity.ERROR), { desc = "Prev Error" })
 vim.keymap.set("n", "]w", diagnostic_goto(true, severity.WARN), { desc = "Next Warning" })
 vim.keymap.set("n", "[w", diagnostic_goto(false, severity.WARN), { desc = "Prev Warning" })
+
+-- User command to add diagnostics to location list.
+vim.api.nvim_create_user_command("DiagnosticsToLocList", function(args)
+  local filter = args.args or nil
+  local opts = {}
+
+  if filter == "error" then
+    opts.severity = severity.ERROR
+  end
+
+  if filter == "warning" then
+    opts.severity = severity.WARN
+  end
+
+  if filter == "info" then
+    opts.severity = severity.INFO
+  end
+
+  if filter == "hint" then
+    opts.severity = severity.HINT
+  end
+
+  vim.diagnostic.setloclist(opts)
+end, {
+  nargs = "?",
+  complete = function(_, _)
+    return { "error", "warning", "info", "hint" }
+  end,
+  desc = "Add diagnostics to location list",
+})
