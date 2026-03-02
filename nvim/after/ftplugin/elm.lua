@@ -85,31 +85,30 @@ local function get_match_range(query_string)
   local start_col = nil
   local end_col = nil
 
-  -- By starting at the row above the cursor it will make sure that the
-  -- last capture is the closest function above.
   for _, match in query:iter_captures(root, bufnr) do
     local s_row, s_col, e_row, e_col = match:range()
     local offset_e = e_row + 1
 
-    -- print(row, s_row, e_row)
     if row >= s_row and row <= offset_e then
       start_row = vim.fn.max({ start_row, s_row })
       end_row = vim.fn.min({ end_row, offset_e })
       if start_row == s_row and end_row == offset_e then
         start_col = s_col
         end_col = e_col
+        m = match
       end
     end
   end
+
   return start_row, start_col, end_row, end_col
 end
 
 local function to_previous_function()
-  move_up("(function_declaration_left) @function")
+  move_up("[((anonymous_function_expr) @anonymous_function) ((value_declaration body: (_) @body))] @fun")
 end
 
 local function to_next_function()
-  move_down("(function_declaration_left) @function")
+  move_down("[((anonymous_function_expr) @anonymous_function) ((value_declaration body: (_) @body))] @fun")
 end
 
 local function to_previous_top_function()
@@ -133,7 +132,7 @@ local function select(s_row, s_col, e_row, e_col)
     return
   end
 
-  vim.api.nvim_win_set_cursor(0, { s_row + 1, s_col })
+  vim.api.nvim_win_set_cursor(0, { s_row, s_col })
   vim.cmd("normal! m<")
 
   vim.api.nvim_win_set_cursor(0, { e_row, e_col })
@@ -143,13 +142,15 @@ local function select(s_row, s_col, e_row, e_col)
 end
 
 local function inner_function()
-  local s_row, s_col, e_row, e_col = get_match_range("(value_declaration body: (_) @body)")
-  select(s_row, s_col, e_row, e_col)
+  local s_row, s_col, e_row, e_col =
+      get_match_range("[((anonymous_function_expr) @anonymous_function) ((value_declaration body: (_) @body))] @fun")
+  select(s_row + 1, s_col, e_row, e_col)
 end
 
 local function around_function()
   local s_row, s_col, e_row, e_col = get_match_range("(value_declaration body: (_) @body)")
-  select(s_row - 1, e_row + 1)
+  print(s_row - 1, e_row + 1)
+  select(s_row - 1, 0, e_row, e_col)
 end
 
 vim.keymap.set({ "o", "x" }, "if", inner_function, { silent = true, noremap = true })
