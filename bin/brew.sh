@@ -31,6 +31,7 @@ apps=(
 	fzf
 	git
 	git-delta
+	gh
 	jq
 	koekeishiya/formulae/skhd
 	lazygit
