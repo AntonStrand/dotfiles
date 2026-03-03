@@ -25,6 +25,8 @@ local function move_cursor(closest_match)
 
   -- The row is a line above the actual function definition
   vim.api.nvim_win_set_cursor(0, { cursor_row + 1, cursor_col })
+
+  -- Add position to the jumplist
   vim.cmd("normal! m'")
 end
 
@@ -144,6 +146,11 @@ local function inner_function()
   select(s_row + 1, s_col, e_row, e_col)
 end
 
+local function inner_top_function()
+  local s_row, s_col, e_row, e_col = get_match_range("(file (value_declaration body: (_) @top_function_body))")
+  select(s_row + 1, s_col, e_row, e_col)
+end
+
 local function around_function()
   local s_row, s_col, e_row, e_col = get_match_range(
     "[((anonymous_function_expr expr: (_) @anonymous_function_body)) ((value_declaration body: (_) @body))] @fun"
@@ -169,11 +176,36 @@ local function around_function()
   select(s_row, 0, e_row, e_col)
 end
 
+local function around_top_function()
+  local s_row, s_col, e_row, e_col = get_match_range("(file (value_declaration body: (_)) @function)")
+
+  local type_annotation_query = vim.treesitter.query.parse("elm", "(type_annotation) @type_annotation")
+  local bufnr = vim.api.nvim_get_current_buf()
+  local root = get_root(bufnr)
+  local has_type_annotation = false
+
+  for _, match in type_annotation_query:iter_captures(root, bufnr, s_row - 2, s_row) do
+    local row, _, _, _ = match:range()
+    if row + 1 == s_row - 1 then
+      has_type_annotation = true
+    end
+  end
+
+  -- Include type annotation if it is above function
+  if has_type_annotation then
+    s_row = s_row - 1
+  end
+
+  select(s_row, 0, e_row, e_col)
+end
+
 vim.keymap.set({ "o", "x" }, "if", inner_function, { silent = true, noremap = true })
+vim.keymap.set({ "o", "x" }, "iF", inner_top_function, { silent = true, noremap = true })
 vim.keymap.set({ "o", "x" }, "af", around_function, { silent = true, noremap = true })
-vim.keymap.set({ "n", "v" }, "[f", to_previous_function, { silent = true, noremap = true })
-vim.keymap.set({ "n", "v" }, "]f", to_next_function, { silent = true, noremap = true })
-vim.keymap.set({ "n", "v" }, "[F", to_previous_top_function, { silent = true, noremap = true })
-vim.keymap.set({ "n", "v" }, "]F", to_next_top_function, { silent = true, noremap = true })
+vim.keymap.set({ "o", "x" }, "aF", around_top_function, { silent = true, noremap = true })
+vim.keymap.set({ "n", "v" }, "[[", to_previous_function, { silent = true, noremap = true })
+vim.keymap.set({ "n", "v" }, "]]", to_next_function, { silent = true, noremap = true })
+vim.keymap.set({ "n", "v" }, "[f", to_previous_top_function, { silent = true, noremap = true })
+vim.keymap.set({ "n", "v" }, "]f", to_next_top_function, { silent = true, noremap = true })
 vim.keymap.set({ "n", "v" }, "[t", to_previous_type_annotation, { silent = true, noremap = true })
 vim.keymap.set({ "n", "v" }, "]t", to_next_type_annotation, { silent = true, noremap = true })
