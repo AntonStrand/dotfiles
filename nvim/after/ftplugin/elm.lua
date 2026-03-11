@@ -61,7 +61,7 @@ local function move_down(query)
 	local closest_function = nil
 
 	for _, fn in function_definitions:iter_captures(root, bufnr, row + 1, -1) do
-		local s_row, _, e_row, _ = fn:range()
+		local s_row, _, _, _ = fn:range()
 
 		if not closest_function and s_row > row then
 			closest_function = fn
@@ -95,7 +95,6 @@ local function get_match_range(query_string)
 			if start_row == s_row and end_row == offset_e then
 				start_col = s_col
 				end_col = e_col
-				m = match
 			end
 		end
 	end
