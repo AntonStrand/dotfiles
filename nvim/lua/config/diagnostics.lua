@@ -2,37 +2,26 @@
 local severity = vim.diagnostic.severity
 
 vim.diagnostic.config({
-  signs = {
-    text = {
-      [severity.ERROR] = "󰅚 ",
-      [severity.WARN] = "󰀪 ",
-      [severity.HINT] = "󰌶 ",
-      [severity.INFO] = "󰋽 ",
-    },
-  },
-  virtual_text = {
-    spacing = 2,
-    format = function(diagnostic)
-      -- Don't show any message for info or hint
-      if diagnostic.severity == severity.INFO or diagnostic.severity == severity.HINT then
-        return ""
-      end
-
-      -- Only show a short message for warnings and errors
-      local first_line = diagnostic.message:gmatch("[^\n]*")()
-      local first_sentence = string.match(first_line, "(.-%. )") or first_line
-      local first_lhs = string.match(first_sentence, "(.-): ") or first_sentence
-      return first_lhs
-    end,
-  },
+	signs = {
+		text = {
+			[severity.ERROR] = "󰅚 ",
+			[severity.WARN] = "󰀪 ",
+			[severity.HINT] = "󰌶 ",
+			[severity.INFO] = "󰋽 ",
+		},
+	},
+	virtual_text = {
+		spacing = 2,
+		current_line = true,
+	},
 })
 
 -- diagnostic keymaps
 local diagnostic_goto = function(next, severity_)
-  severity_ = severity_ and severity[severity_] or nil
-  return function()
-    vim.diagnostic.jump({ count = next and 1 or -1, float = true, severity = severity_ })
-  end
+	severity_ = severity_ and severity[severity_] or nil
+	return function()
+		vim.diagnostic.jump({ count = next and 1 or -1, float = true, severity = severity_ })
+	end
 end
 
 vim.keymap.set("n", "<leader>d", vim.diagnostic.open_float, { desc = "Line Diagnostics" })
@@ -46,30 +35,30 @@ vim.keymap.set("n", "[w", diagnostic_goto(false, severity.WARN), { desc = "Prev 
 
 -- User command to add diagnostics to location list.
 vim.api.nvim_create_user_command("DiagnosticsToLocList", function(args)
-  local filter = args.args or nil
-  local opts = {}
+	local filter = args.args or nil
+	local opts = {}
 
-  if filter == "error" then
-    opts.severity = severity.ERROR
-  end
+	if filter == "error" then
+		opts.severity = severity.ERROR
+	end
 
-  if filter == "warning" then
-    opts.severity = severity.WARN
-  end
+	if filter == "warning" then
+		opts.severity = severity.WARN
+	end
 
-  if filter == "info" then
-    opts.severity = severity.INFO
-  end
+	if filter == "info" then
+		opts.severity = severity.INFO
+	end
 
-  if filter == "hint" then
-    opts.severity = severity.HINT
-  end
+	if filter == "hint" then
+		opts.severity = severity.HINT
+	end
 
-  vim.diagnostic.setloclist(opts)
+	vim.diagnostic.setloclist(opts)
 end, {
-  nargs = "?",
-  complete = function(_, _)
-    return { "error", "warning", "info", "hint" }
-  end,
-  desc = "Add diagnostics to location list",
+	nargs = "?",
+	complete = function(_, _)
+		return { "error", "warning", "info", "hint" }
+	end,
+	desc = "Add diagnostics to location list",
 })
