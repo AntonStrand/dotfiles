@@ -17,9 +17,9 @@ vim.api.nvim_create_autocmd("LspAttach", {
     -- See `:help vim.lsp.*` for documentation on any of the below functions
     local opts = { buffer = args.buf, silent = true }
 
-    -- set keybinds
-    opts.desc = "Show LSP references"
-    keymap.set("n", "gr", "<cmd>Telescope lsp_references<CR>", opts)
+		-- set keybinds
+		opts.desc = "Show LSP references"
+		keymap.set("n", "<leader>gr", "<cmd>Telescope lsp_references<CR>", opts)
 
     opts.desc = "Go to declaration"
     keymap.set("n", "gD", vim.lsp.buf.declaration, opts)
