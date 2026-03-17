@@ -4,7 +4,7 @@ local function get_root(bufnr)
 	return tree:root()
 end
 
-local function move_cursor(closest_match)
+local function move_cursor(closest_match, use_first_col)
 	if not closest_match then
 		return
 	end
@@ -17,7 +17,7 @@ local function move_cursor(closest_match)
 	if closest_match:type() == "function_declaration_left" then
 		local line_width = #vim.api.nvim_get_current_line()
 
-		if line_width > col then
+		if line_width > col and not use_first_col then
 			cursor_col = col
 		else
 			cursor_col = 0
@@ -31,7 +31,7 @@ local function move_cursor(closest_match)
 	vim.cmd("normal! m'")
 end
 
-local function move_up(query)
+local function move_up(query, use_first_col)
 	local definition_query = vim.treesitter.query.parse("elm", query)
 
 	local bufnr = vim.api.nvim_get_current_buf()
@@ -47,10 +47,10 @@ local function move_up(query)
 		closest_match = fn
 	end
 
-	move_cursor(closest_match)
+	move_cursor(closest_match, use_first_col)
 end
 
-local function move_down(query)
+local function move_down(query, use_first_col)
 	local function_definitions = vim.treesitter.query.parse("elm", query)
 
 	local bufnr = vim.api.nvim_get_current_buf()
@@ -69,7 +69,7 @@ local function move_down(query)
 		end
 	end
 
-	move_cursor(closest_function)
+	move_cursor(closest_function, use_first_col)
 end
 
 local function get_match_range(query_string)
@@ -113,11 +113,11 @@ local function to_next_function()
 end
 
 local function to_previous_top_function()
-	move_up("(file (value_declaration (function_declaration_left) @top_function)) ")
+	move_up("(file (value_declaration (function_declaration_left) @top_function)) ", true)
 end
 
 local function to_next_top_function()
-	move_down("(file (value_declaration (function_declaration_left) @top_function)) ")
+	move_down("(file (value_declaration (function_declaration_left) @top_function)) ", true)
 end
 
 local function to_previous_type_annotation()
