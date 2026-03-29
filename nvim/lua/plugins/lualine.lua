@@ -22,8 +22,6 @@ local function path()
 end
 
 return {
-	-- Dependency to show copilot status in lualine.
-	-- { "AndreM222/copilot-lualine" },
 	{
 		"nvim-lualine/lualine.nvim",
 		dependencies = { "nvim-tree/nvim-web-devicons" },
@@ -85,31 +83,6 @@ return {
 						"trouble",
 					},
 					lualine_x = {
-						-- {
-						--   "copilot",
-						--   symbols = {
-						--     status = {
-						--       icons = {
-						--         enabled = "",
-						--         sleep = "",
-						--         disabled = "",
-						--         warning = "",
-						--         unknown = "",
-						--       },
-						--       hl = {
-						--         enabled = mocha.green,
-						--         sleep = mocha.green,
-						--         disabled = mocha.overlay0,
-						--         warning = mocha.peach,
-						--         unknown = mocha.red,
-						--       },
-						--     },
-						--     spinners = require("copilot-lualine.spinners").dots,
-						--     spinner_color = mocha.green,
-						--   },
-						--   show_colors = true,
-						--   show_loading = true,
-						-- },
 						{
 							-- Show number of plugins that needs to be updated if there are any
 							lazy_status.updates,
