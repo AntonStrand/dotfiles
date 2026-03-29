@@ -4,15 +4,24 @@ local severity = vim.diagnostic.severity
 vim.diagnostic.config({
 	signs = {
 		text = {
-			[severity.ERROR] = "󰅚 ",
-			[severity.WARN] = "󰀪 ",
-			[severity.HINT] = "󰌶 ",
-			[severity.INFO] = "󰋽 ",
+			[severity.ERROR] = "■",
+			[severity.WARN] = "▲",
+			[severity.INFO] = "●",
+			[severity.HINT] = "◆",
 		},
 	},
 	virtual_text = {
 		spacing = 2,
 		current_line = true,
+		prefix = function(d)
+			local icons = {
+				[severity.ERROR] = "▪",
+				[severity.WARN] = "▪",
+				[severity.INFO] = "▪",
+				[severity.HINT] = "▪",
+			}
+			return icons[d.severity] or ""
+		end,
 	},
 })
 

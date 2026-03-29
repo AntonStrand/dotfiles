@@ -73,7 +73,6 @@ return {
                 modified = "", -- Icon to show when the file is modified.
               },
             },
-            "diagnostics",
             {
               function()
                 local bufnr = vim.api.nvim_get_current_buf()
@@ -128,4 +127,10 @@ return {
       })
     end,
   },
+						{
+						{
+						{
+							"diagnostics",
+							symbols = { error = "■ ", warn = "▲ ", info = "● ", hint = "◆ " },
+						},
 }
