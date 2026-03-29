@@ -5,6 +5,7 @@ local servers = {
 	"lua_ls",
 	"tailwindcss",
 	"ts_ls",
+	"biome",
 }
 
 vim.lsp.enable(servers)
