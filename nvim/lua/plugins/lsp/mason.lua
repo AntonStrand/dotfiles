@@ -42,4 +42,5 @@ return {
       "williamboman/mason.nvim",
     },
   },
+				"biome", -- Formatter
 }
