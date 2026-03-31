@@ -1,7 +1,7 @@
 local o = vim.opt
 
 -- Performance settings
-o.synmaxcol = 300  -- Syntax highlighting limit
+o.synmaxcol = 300 -- Syntax highlighting limit
 o.updatetime = 300 -- Faster completion
 o.redrawtime = 10000
 o.maxmempattern = 20000
@@ -66,27 +66,27 @@ local border = "rounded"
 o.winborder = border
 
 vim.api.nvim_create_autocmd("CmdlineEnter", {
-  callback = function()
-    o.winborder = "none"
-  end,
+	callback = function()
+		o.winborder = "none"
+	end,
 })
 vim.api.nvim_create_autocmd("CmdlineLeave", {
-  callback = function()
-    o.winborder = border
-  end,
+	callback = function()
+		o.winborder = border
+	end,
 })
 
 -- Tell nvim how to handle modern filetypes
 vim.filetype.add({
-  extension = {
-    env = "dotenv",
-  },
-  filename = {
-    [".env"] = "dotenv",
-    ["env"] = "dotenv",
-  },
-  pattern = {
-    ["[jt]sconfig.*.json"] = "jsonc",
-    ["%.env%.[%w_.-]+"] = "dotenv",
-  },
+	extension = {
+		env = "dotenv",
+	},
+	filename = {
+		[".env"] = "dotenv",
+		["env"] = "dotenv",
+	},
+	pattern = {
+		["[jt]sconfig.*.json"] = "jsonc",
+		["%.env%.[%w_.-]+"] = "dotenv",
+	},
 })

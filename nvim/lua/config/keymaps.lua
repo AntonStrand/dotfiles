@@ -25,10 +25,10 @@ vim.keymap.set("n", "#", "#zz")
 
 -- Generate uuid
 vim.keymap.set(
-  "n",
-  "<leader>ug",
-  ":let @u = system(\"uuidgen | tr '[:upper:]' '[:lower:]' | tr -d '\\n'\")<CR>",
-  { desc = "Generate UUID" }
+	"n",
+	"<leader>ug",
+	":let @u = system(\"uuidgen | tr '[:upper:]' '[:lower:]' | tr -d '\\n'\")<CR>",
+	{ desc = "Generate UUID" }
 )
 
 -- Move selected lines with shift+j or shift+k
