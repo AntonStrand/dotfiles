@@ -35,4 +35,5 @@ return {
       desc = "Diagnostics erros (Trouble)",
     },
   },
+			desc = "Diagnostics errors (Trouble)",
 }
