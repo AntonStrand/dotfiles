@@ -30,7 +30,6 @@ return {
 			local lualine = require("lualine")
 			-- to configure lazy pending updates count
 			local lazy_status = require("lazy.status")
-			local mocha = require("catppuccin.palettes").get_palette("mocha")
 
 			-- configure lualine with modified theme
 			lualine.setup({
@@ -52,7 +51,7 @@ return {
 							path,
 							icon = " ",
 							separator = "",
-							color = { fg = mocha.overlay1 },
+							color = { fg = "#7f849c" },
 						},
 						{
 							"filetype",
@@ -87,7 +86,7 @@ return {
 							-- Show number of plugins that needs to be updated if there are any
 							lazy_status.updates,
 							cond = lazy_status.has_updates,
-							color = { fg = mocha.maroon },
+							color = { fg = "#eba0ac" },
 						},
 					},
 					lualine_y = {
