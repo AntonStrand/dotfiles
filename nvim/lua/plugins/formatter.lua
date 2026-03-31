@@ -33,6 +33,7 @@ return {
 			typescript = priotizedFormatter,
 			javascriptreact = priotizedFormatter,
 			typescriptreact = priotizedFormatter,
+			sh = { "shfmt" },
 		},
 		format_on_save = {
 			timeout_ms = 1000,
