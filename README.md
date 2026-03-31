@@ -1,6 +1,6 @@
 # Dotfiles
 
-My current dot files configurations
+Configuration for a keyboard-centric, terminal-based workflow with tiling window management.
 
 ## Instructions
 
