@@ -1,7 +1,7 @@
 # Reload config cmd shift ,
 
 
-theme = Catppuccin Mocha
+theme = dark:Catppuccin Mocha,light:Rose Pine Dawn
 font-size = 14
 
 # Remove ligature
