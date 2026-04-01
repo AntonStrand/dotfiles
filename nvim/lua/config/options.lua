@@ -48,6 +48,9 @@ o.scrolloff = 8
 -- Always keep cursor 8 characters from horizontal edge unless at start/end of file
 o.sidescrolloff = 8
 
+-- Ask if unsaved files should be saved while quiting instead of throwing error
+o.confirm = true
+
 -- O and o, don't continue comments
 vim.cmd([[autocmd FileType * set formatoptions-=o]])
 
