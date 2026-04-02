@@ -1,13 +1,13 @@
 local delimiter = "\t\t"
 
 vim.api.nvim_create_autocmd("FileType", {
-  pattern = "TelescopeResults",
-  callback = function(ctx)
-    vim.api.nvim_buf_call(ctx.buf, function()
-      vim.fn.matchadd("TelescopeParent", string.format("%s.*$", delimiter))
-      vim.api.nvim_set_hl(0, "TelescopeParent", { link = "Comment" })
-    end)
-  end,
+	pattern = "TelescopeResults",
+	callback = function(ctx)
+		vim.api.nvim_buf_call(ctx.buf, function()
+			vim.fn.matchadd("TelescopeParent", string.format("%s.*$", delimiter))
+			vim.api.nvim_set_hl(0, "TelescopeParent", { link = "Comment" })
+		end)
+	end,
 })
 
 local function filenameFirst(_, path)
@@ -70,6 +70,7 @@ return {
         },
       },
     })
+				preview = { treesitter = false },
 
     telescope.load_extension("fzf")
     telescope.load_extension("live_grep_args")
