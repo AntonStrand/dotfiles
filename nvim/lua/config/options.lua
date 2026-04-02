@@ -28,7 +28,11 @@ o.ignorecase = true
 o.smartcase = true
 
 -- Set completeopt to have a better completion experience
-o.completeopt = { "menuone", "noselect" }
+o.completeopt = { "fuzzy", "menuone", "noselect", "popup", "preview" }
+-- Complete options for the cmdline
+o.wildmenu = true
+o.wildoptions = "fuzzy,pum,tagfile"
+o.wildmode = "noselect:lastused,full"
 
 -- Enable persistent undo history
 o.undofile = true
@@ -63,21 +67,12 @@ o.inccommand = "split"
 -- Use ripgrep for grep
 vim.cmd([[set grepprg=rg\ --vimgrep\ --smart-case\ --follow]])
 
--- Rounded bordes collides with Wilder styling while suggesting commands
--- This is a workaround by removing the border when using the command
-local border = "rounded"
-o.winborder = border
+-- Rounded borders
+o.winborder = "rounded"
 
-vim.api.nvim_create_autocmd("CmdlineEnter", {
-	callback = function()
-		o.winborder = "none"
-	end,
-})
-vim.api.nvim_create_autocmd("CmdlineLeave", {
-	callback = function()
-		o.winborder = border
-	end,
-})
+-- Make the cmdline completion menu look better
+o.pumborder = "rounded"
+vim.api.nvim_set_hl(0, "PmenuBorder", { fg = "#fab387" })
 
 -- Tell nvim how to handle modern filetypes
 vim.filetype.add({

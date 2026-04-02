@@ -2,6 +2,7 @@ return {
 	{
 		"gelguy/wilder.nvim",
 		event = "VeryLazy",
+		enabled = false,
 		keys = {
 			":",
 			"/",
