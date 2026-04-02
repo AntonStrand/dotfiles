@@ -67,6 +67,9 @@ o.inccommand = "split"
 -- Use ripgrep for grep
 vim.cmd([[set grepprg=rg\ --vimgrep\ --smart-case\ --follow]])
 
+-- include subdirectories in search
+o.path:append("**")
+
 -- Rounded borders
 o.winborder = "rounded"
 
