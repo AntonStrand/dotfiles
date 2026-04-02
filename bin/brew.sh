@@ -47,6 +47,7 @@ apps=(
   tmux
   tree
   tree-sitter
+  tree-sitter-cli
   wget
   yabai
   zoxide
