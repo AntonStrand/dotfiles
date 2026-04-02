@@ -63,6 +63,8 @@ o.spelllang = "sv,en_us"
 
 -- Preview commands in a separate window
 o.inccommand = "split"
+-- Screen lines use buy cmd window (default: 7)
+o.cmdwinheight = 10
 
 -- Use ripgrep for grep
 vim.cmd([[set grepprg=rg\ --vimgrep\ --smart-case\ --follow]])
